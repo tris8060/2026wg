@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 页面标题 - 请根据实际页面修改 -->
+    <title>页面标题 - 中科闻歌</title>
+    
+    <!-- 引入公共 Head 内容 -->
+    <script>
+        // 动态加载 head.html 内容
+        fetch('/components/head.html')
+            .then(response => response.text())
+            .then(html => {
+                const head = document.head;
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                
+                // 将内容插入到 head 中
+                while (tempDiv.firstChild) {
+                    head.appendChild(tempDiv.firstChild);
+                }
+                
+                // 初始化图标
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            })
+            .catch(error => console.error('Error loading head:', error));
+    </script>
+</head>
+<body class="font-sans text-modern-dark bg-modern-bg selection:bg-indigo-500 selection:text-white">
+
+    <!-- 导航栏容器 -->
+    <div id="nav-container"></div>
+
+    <!-- 页面主内容区域 -->
+    <main>
+        <!-- 页面内容将在这里插入 -->
+        <div class="min-h-[60vh] flex items-center justify-center">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-modern-dark mb-4">页面标题</h1>
+                <p class="text-gray-500">页面内容区域</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer 容器 -->
+    <div id="footer-container"></div>
+
+    <!-- 组件加载脚本 -->
+    <script src="/components/components.js"></script>
+    
+    <!-- 页面特定脚本 -->
+    <script>
+        // 页面特定的 JavaScript 代码
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('页面加载完成');
+        });
+    </script>
+</body>
+</html>

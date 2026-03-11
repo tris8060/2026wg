@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>洞悉闻歌动向，探索AI精彩 - 中科闻歌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../components/loader.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            900: '#7f1d1d',
+                        },
+                        modern: {
+                            bg: '#ffffff',
+                            card: '#f9f9fb',
+                            dark: '#0f172a',
+                            text: '#4b5563',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fafafa;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* 超级菜单内容淡入动画 */
+        @keyframes fadeInMenu {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-menu {
+            animation: fadeInMenu 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        /* 隐藏滚动条但允许滚动 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- 组件容器 -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-28 pb-20 lg:pt-32 lg:pb-28 overflow-hidden bg-[#fafafa]">
+        <!-- Vector Geometric Background -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-gradient-to-br from-brand-200 to-red-100 blur-3xl opacity-80"></div>
+            <div class="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-blue-200 to-indigo-100 blur-3xl opacity-80"></div>
+            
+            <svg class="absolute inset-0 w-full h-full opacity-90" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="0.5" opacity="0.6"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hero-grid)" />
+                <circle cx="85%" cy="15%" r="400" fill="none" stroke="#64748b" stroke-width="1.5" opacity="0.6" />
+                <circle cx="85%" cy="15%" r="600" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="8 8" opacity="0.5" />
+                <circle cx="15%" cy="85%" r="300" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.5" />
+                <circle cx="15%" cy="85%" r="450" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.4" />
+                <path d="M -50 250 L 400 100" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.7" />
+                <path d="M 70% 100% L 110% 60%" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.7" />
+                <path d="M 40% -50 L 50% 150" fill="none" stroke="#334155" stroke-width="1.5" opacity="0.8" />
+                <circle cx="20%" cy="30%" r="5" fill="#dc2626" opacity="0.6" />
+                <circle cx="75%" cy="70%" r="7" fill="#2563eb" opacity="0.6" />
+                <circle cx="60%" cy="20%" r="4" fill="#d97706" opacity="0.7" />
+                <circle cx="45%" cy="80%" r="6" fill="#059669" opacity="0.5" />
+            </svg>
+        </div>
+        
+        <div class="absolute inset-0 bg-white/15 backdrop-blur-[1px] z-0"></div>
+
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0f172a] mb-6">
+                洞悉闻歌动向，<span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-indigo-600">探索AI精彩</span>
+            </h1>
+            
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 font-medium mb-8 mx-auto whitespace-normal lg:whitespace-nowrap overflow-hidden text-ellipsis w-full">
+                在闻歌我们共同成长
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Grid Layout -->
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 pt-24 pb-16 grid grid-cols-1 lg:grid-cols-5 gap-12 items-start relative">
+        
+        <!-- Sticky Sidebar -->
+        <aside class="sticky top-28 col-span-1 hidden lg:block py-4">
+            <nav class="border-l border-slate-200 flex flex-col space-y-4" id="toc-nav">
+                <a href="#all-news" class="toc-link block pl-4 py-2 border-l-2 border-slate-900 text-slate-900 font-bold transition-all hover:border-slate-300 hover:text-slate-900">
+                    <div class="text-base">全部新闻</div>
+                </a>
+                <a href="#corp-news" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-slate-300 hover:text-slate-900">
+                    <div class="text-base">企业资讯</div>
+                </a>
+                <a href="#media-news" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-slate-300 hover:text-slate-900">
+                    <div class="text-base">媒体报道</div>
+                </a>
+                <a href="#events" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-slate-300 hover:text-slate-900">
+                    <div class="text-base">市场活动</div>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="col-span-1 lg:col-span-4 w-full min-w-0 flex flex-col gap-16 lg:gap-20">
+            
+            <!-- Section 1: 全部新闻 -->
+            <section id="all-news" class="scroll-mt-28">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">全部新闻</h2>
+                        <p class="text-slate-500 text-base sm:text-lg">掌握中科闻歌最新动态与前沿成果。</p>
+                    </div>
+                    <button class="flex items-center text-sm font-medium text-slate-900 hover:text-brand-600 transition whitespace-nowrap">
+                        查看更多 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 pb-6 sm:pb-0 no-scrollbar">
+                    <!-- Card 1.1 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge1/800/600';" alt="雅意大模型发布" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-blue-50 text-blue-600 rounded">产品发布</span>
+                                <span class="text-xs text-slate-400">2026-03-05</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">雅意大模型3.0正式发布，多模态能力全面跃升</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">中科闻歌正式推出雅意（YAYI）大模型3.0版本，全面增强了图文理解与智能生成能力，为千行百业提供更强大的AI底座支持。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 1.2 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge2/800/600';" alt="入选百强榜单" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-amber-50 text-amber-600 rounded">公司荣誉</span>
+                                <span class="text-xs text-slate-400">2026-02-28</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">中科闻歌入选“2026中国人工智能百强企业”</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">凭借在决策智能和媒体大模型领域的持续创新，中科闻歌蝉联百强榜单，展现了强大的技术实力与深厚的行业积累。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 1.3 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge3/800/600';" alt="天湖平台升级" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-cyan-50 text-cyan-600 rounded">技术突破</span>
+                                <span class="text-xs text-slate-400">2026-02-15</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">“天湖”数据智算平台迎重大升级，算力调度效能提升40%</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">全新升级的“天湖”平台引入了自研的分布式智算调度引擎，大幅降低了政企端模型微调与数据处理的算力成本。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 1.4 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1531297122-e12836be60b5?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge4/800/600';" alt="数字人政务大厅" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-emerald-50 text-emerald-600 rounded">案例落地</span>
+                                <span class="text-xs text-slate-400">2026-01-10</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">助力打造全国首个省级政务“AI数字人”服务大厅</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">依托雅意大模型与高保真数字人技术，闻歌携手某省数据局，成功打造7x24小时全天候交互大厅，重塑政务体验。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: 企业资讯 -->
+            <section id="corp-news" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">企业资讯</h2>
+                        <p class="text-slate-500 text-base sm:text-lg">了解我们的产品发布、战略合作与公司治理。</p>
+                    </div>
+                    <button class="flex items-center text-sm font-medium text-slate-900 hover:text-brand-600 transition whitespace-nowrap">
+                        查看更多 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 pb-6 sm:pb-0 no-scrollbar">
+                    <!-- Card 2.1 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge5/800/600';" alt="金融战略合作" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">战略合作</span>
+                                <span class="text-xs text-slate-400">2026-02-22</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">闻歌科技与某大型国有银行达成亿元级战略合作</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">双方将围绕金融风控大模型、智能投研、客户图谱等领域展开深度联合研发，共建金融数智化新标杆项目。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.2 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge6/800/600';" alt="D轮融资" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">投资融资</span>
+                                <span class="text-xs text-slate-400">2025-12-18</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">中科闻歌获数亿元D轮融资，加速核心技术攻关</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">本轮融资由多家知名国家级产业基金领投，资金将主要用于通用人工智能底层技术的研发及高端人才梯队建设。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.3 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge7/800/600';" alt="新总部入驻" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">企业动态</span>
+                                <span class="text-xs text-slate-400">2025-11-05</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">公司总部正式入驻国家级人工智能创新产业园</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">新总部大楼集成了闻歌最新的“天湖”智慧园区解决方案，全方位展示了数字孪生与物联网技术的完美融合。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2.4 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge8/800/600';" alt="前沿实验室成立" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">科研进展</span>
+                                <span class="text-xs text-slate-400">2025-09-20</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">中科闻歌成立“决策智能前沿实验室”，院士领衔</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">实验室将聚焦复杂系统决策、认知计算等前沿交叉领域，致力于突破新一代人工智能与大数据融合的核心瓶颈。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: 媒体报道 -->
+            <section id="media-news" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">媒体报道</h2>
+                        <p class="text-slate-500 text-base sm:text-lg">来自各大权威媒体机构的深度观察与专访。</p>
+                    </div>
+                    <button class="flex items-center text-sm font-medium text-slate-900 hover:text-brand-600 transition whitespace-nowrap">
+                        查看更多 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 pb-6 sm:pb-0 no-scrollbar">
+                    <!-- Card 3.1 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge9/800/600';" alt="人民日报报道" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-red-50 text-red-600 rounded">权威声音</span>
+                                <span class="text-xs text-slate-400">2026-01-28</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">人民日报：AI如何成为国家治理现代化的新引擎？</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">深度专访中科闻歌，剖析大数据与决策智能在提升社会治理效能、赋能新型智慧城市建设中的关键基石作用。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3.2 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1522869634100-a94f5053a948?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge10/800/600';" alt="央视对话" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-red-50 text-red-600 rounded">电视访谈</span>
+                                <span class="text-xs text-slate-400">2025-11-12</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">央视《对话》：从融媒体到智媒体，技术带来的变革</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">中科闻歌技术专家做客央视演播室，生动分享“红旗”融媒体平台在重大国家级赛事调度中的海量并发实战经验。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3.3 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge11/800/600';" alt="商业模式深度" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">行业洞察</span>
+                                <span class="text-xs text-slate-400">2025-10-08</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">36氪深度：拆解中科闻歌“数据+AI”双轮驱动商业模式</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">长文报道了中科闻歌如何通过天湖平台与雅意大模型打通企业端数据流闭环，实现规模化、标准化的商业落地。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3.4 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge12/800/600';" alt="大模型应用" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">新华网评</span>
+                                <span class="text-xs text-slate-400">2025-08-30</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">新华网评：国产大模型的“务实”赋能之路</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">评论文章指出，以中科闻歌为代表的硬科技企业正加速推动AI大模型从“炫技”走向“实用”，深度赋能实体经济。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: 市场活动 -->
+            <section id="events" class="scroll-mt-28 pt-10 border-t border-slate-200">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">市场活动</h2>
+                        <p class="text-slate-500 text-base sm:text-lg">行业峰会、线上研讨与展会第一线。</p>
+                    </div>
+                    <button class="flex items-center text-sm font-medium text-slate-900 hover:text-brand-600 transition whitespace-nowrap">
+                        查看更多 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 pb-6 sm:pb-0 no-scrollbar">
+                    <!-- Card 4.1 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge13/800/600';" alt="世界人工智能大会" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-indigo-50 text-indigo-600 rounded">行业展会</span>
+                                <span class="text-xs text-slate-400">2026-06-10 (预告)</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">中科闻歌即将亮相2026世界人工智能大会 (WAIC)</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">我们将携最新多模态智能体产品线登陆上海展区，现场展示图文智能创作、超写实虚拟主播等黑科技，期待莅临。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.2 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1558403109-0895b6a12b92?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge14/800/600';" alt="百城巡演" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-violet-50 text-violet-600 rounded">线下沙龙</span>
+                                <span class="text-xs text-slate-400">2026-03-01</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">“数智未来”企业行全国巡演首站于深圳圆满落幕</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">本次巡演聚焦大湾区企业数字化转型痛点，现场超500位企业高管与技术专家共同探讨垂直大模型的低成本落地路径。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.3 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1522881115148-52b2f6984e03?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge15/800/600';" alt="开发者大赛" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-fuchsia-50 text-fuchsia-600 rounded">开发者生态</span>
+                                <span class="text-xs text-slate-400">2025-11-20</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">诚邀参加：第一届“雅意杯”大模型应用开发者大赛</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">赛事面向全球开发者免费开放API，提供丰厚奖金池与强大算力支持，旨在激发AI原生应用创新，繁荣开源生态。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4.4 -->
+                    <div class="w-[85vw] sm:w-auto shrink-0 snap-center group cursor-pointer bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:shadow-lg transition-shadow">
+                        <div class="aspect-[4/3] bg-slate-100 rounded-2xl mb-6 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null; this.src='https://picsum.photos/seed/wenge16/800/600';" alt="白皮书发布" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="px-2 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-xs font-bold px-2 py-1 bg-slate-100 text-slate-600 rounded">智库报告</span>
+                                <span class="text-xs text-slate-400">2025-10-15</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition line-clamp-2">闻歌智库联合发布《2026中国行业大模型应用白皮书》</h3>
+                            <p class="text-slate-500 text-sm line-clamp-3 flex-1">联合多家权威研究机构共同编制，系统梳理了过去一年大模型在金融、媒体、政务、公共安全等核心行业的最佳实践案例。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer (精简高度版) -->
+    <footer class="bg-modern-dark text-gray-300 py-10 lg:py-16 rounded-t-2xl mt-6 lg:mt-12 mx-4 sm:mx-6 lg:mx-8 mb-6">
+        <div class="max-w-[1600px] mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-y-8 gap-x-4 lg:gap-12 mb-8 lg:mb-16">
+                <div class="col-span-2 lg:col-span-2 pr-4 lg:pr-0">
+                    <div class="flex items-center mb-4 lg:mb-6">
+                        <img src="https://zmt.wengegroup.com/cityMini/site/static/wenge/assets/image/zkwg-logo-white.svg" alt="中科闻歌" class="h-6 lg:h-7 w-auto">
+                    </div>
+                    <p class="text-gray-400 font-medium mb-6 text-xs lg:text-sm leading-relaxed max-w-sm">源自中国科学院自动化研究所，致力于成为全球领先的认知与决策智能技术服务商。</p>
+                    <div class="space-y-2 lg:space-y-3">
+                        <div class="flex items-center text-xs lg:text-sm font-bold bg-white/10 w-max px-3 py-1.5 lg:px-4 lg:py-2 rounded-full">
+                            <i data-lucide="phone" class="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2"></i> 400-093-5556
+                        </div>
+                        <div class="flex items-center text-xs lg:text-sm font-bold bg-white/10 w-max px-3 py-1.5 lg:px-4 lg:py-2 rounded-full">
+                            <i data-lucide="mail" class="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2"></i> sales@wenge.com
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">产品</h4>
+                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">X-Data 操作系统</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">雅意 Yayi 大模型</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">优雅 Yoya 多模态</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">智川 X-Agent</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">D1 决策大脑</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">解决方案</h4>
+                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">媒体与传播</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">政务与安全</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">金融与风控</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">智慧医疗康养</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">关于</h4>
+                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">关于闻歌</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">资质荣誉</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">闻歌资讯</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">招贤纳士</h4>
+                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">人才理念</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">社会招聘</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">校园招聘</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">社交媒体</h4>
+                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="message-circle" class="w-3.5 h-3.5 mr-1.5"></i> 微信</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="video" class="w-3.5 h-3.5 mr-1.5"></i> 抖音</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5"></i> 知乎</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 lg:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center text-xs lg:text-sm font-medium text-gray-500 gap-3 md:gap-0">
+                <p>&copy; 2026 北京中科闻歌科技股份有限公司 版权所有</p>
+                <div class="space-x-4 lg:space-x-6">
+                    <span>京ICP备17022028号</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        lucide.createIcons();
+
+        // 导航栏滚动交互
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.classList.replace('bg-white/80', 'bg-white/95');
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.classList.replace('bg-white/95', 'bg-white/80');
+            }
+        });
+
+        // 移动端汉堡菜单交互逻辑
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+        let isMenuOpen = false;
+
+        if (mobileMenuBtn && mobileMenuDrawer) {
+            mobileMenuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if(isMenuOpen) {
+                    mobileMenuDrawer.classList.remove('translate-x-full');
+                    mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+                    document.body.style.overflow = 'hidden'; 
+                } else {
+                    mobileMenuDrawer.classList.add('translate-x-full');
+                    mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                    document.body.style.overflow = '';
+                }
+                lucide.createIcons();
+            });
+        }
+
+        // 行业产品超级菜单 Tab 切换交互逻辑 (桌面端)
+        const industryTabBtns = document.querySelectorAll('.industry-tab-btn');
+        const industryContentPanes = document.querySelectorAll('.industry-content-pane');
+
+        industryTabBtns.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                industryTabBtns.forEach(b => {
+                    b.classList.remove('bg-white', 'border-indigo-600', 'text-modern-dark', 'font-bold');
+                    b.classList.add('text-gray-500', 'font-medium', 'border-transparent');
+                });
+                btn.classList.add('bg-white', 'border-indigo-600', 'text-modern-dark', 'font-bold');
+                btn.classList.remove('text-gray-500', 'font-medium', 'border-transparent');
+
+                industryContentPanes.forEach(pane => {
+                    pane.classList.remove('block');
+                    pane.classList.add('hidden');
+                });
+                
+                const targetId = btn.getAttribute('data-target');
+                const targetPane = document.getElementById(targetId);
+                if(targetPane) {
+                    targetPane.classList.remove('hidden');
+                    targetPane.classList.add('block');
+                }
+            });
+        });
+
+        const sectionsObj = document.querySelectorAll('main section[id]');
+        const navLinksObj = document.querySelectorAll('.toc-link');
+
+        let isClickScrolling = false;
+        let scrollTimeout = null;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -50% 0px', 
+            threshold: 0
+        };
+
+        const tocObserver = new IntersectionObserver((entries) => {
+            if (isClickScrolling) return; 
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinksObj.forEach(link => {
+                        link.classList.remove('text-slate-900', 'font-bold', 'border-slate-900');
+                        link.classList.add('text-slate-500', 'border-transparent');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.remove('text-slate-500', 'border-transparent');
+                            link.classList.add('text-slate-900', 'font-bold', 'border-slate-900');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sectionsObj.forEach(sec => tocObserver.observe(sec));
+
+        navLinksObj.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                isClickScrolling = true;
+                clearTimeout(scrollTimeout);
+                
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    navLinksObj.forEach(l => {
+                        l.classList.remove('text-slate-900', 'font-bold', 'border-slate-900');
+                        l.classList.add('text-slate-500', 'border-transparent');
+                    });
+                    link.classList.remove('text-slate-500', 'border-transparent');
+                    link.classList.add('text-slate-900', 'font-bold', 'border-slate-900');
+
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    history.pushState(null, null, `#${targetId}`);
+
+                    scrollTimeout = setTimeout(() => {
+                        isClickScrolling = false;
+                    }, 800);
+                }
+            });
+        });
+    </script>
+
+    <!-- 组件容器 -->
+    <div id="footer-container"></div>
+
+</body>
+</html>

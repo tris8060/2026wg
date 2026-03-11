@@ -1,0 +1,255 @@
+<!-- 基础 Meta 标签 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- Tailwind 配置 -->
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', '"Noto Sans SC"', 'sans-serif'],
+                },
+                colors: {
+                    modern: {
+                        bg: '#ffffff',
+                        card: '#f9f9fb',
+                        dark: '#0f172a',
+                        text: '#4b5563',
+                    }
+                },
+                boxShadow: {
+                    'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                    'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                }
+            }
+        }
+    }
+</script>
+
+<!-- 全局样式 -->
+<style type="text/tailwindcss">
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #ffffff;
+    }
+
+    /* 隐藏滚动条但允许滚动 */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* 动画与悬浮效果 */
+    .hover-lift {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hover-lift:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    }
+
+    /* 玻璃态样式 */
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* Float Animation for Hero */
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .animate-float {
+        animation: float 5s ease-in-out infinite;
+    }
+    .animate-float-delay {
+        animation: float 6s ease-in-out infinite 2s;
+    }
+
+    /* DOMA SVG 架构图动画样式 */
+    @keyframes flow-up {
+        to { stroke-dashoffset: -20; }
+    }
+    @keyframes flow-down-loop {
+        to { stroke-dashoffset: 40; }
+    }
+    .anim-flow {
+        stroke-dasharray: 4 6;
+        animation: flow-up 1s linear infinite;
+    }
+    .anim-flow-loop {
+        stroke-dasharray: 6 8;
+        animation: flow-down-loop 1.5s linear infinite;
+    }
+    .svg-layer-group {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+    .svg-layer-group:hover, .svg-layer-group.active {
+        transform: translateY(-8px);
+    }
+    .svg-layer-group.dimmed {
+        opacity: 0.4;
+        filter: grayscale(40%);
+    }
+
+    /* 超级菜单内容淡入动画 */
+    @keyframes fadeInMenu {
+        from { opacity: 0; transform: translateX(10px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade-in-menu {
+        animation: fadeInMenu 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* 产品服务 - 手风琴交互核心样式 (移动端文档流重构) */
+    .accordion-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 16px;
+    }
+    @media (min-width: 1024px) {
+        .accordion-container {
+            flex-direction: row;
+            height: 560px;
+            gap: 16px;
+        }
+    }
+    
+    .accordion-item {
+        position: relative;
+        flex: none;
+        height: auto;
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        cursor: pointer;
+        background-color: #1a1a1a;
+    }
+    
+    @media (min-width: 1024px) {
+        .accordion-item {
+            flex: 1;
+            height: 100%;
+            border-radius: 1.5rem;
+        }
+        .accordion-item:hover, .accordion-item.active {
+            flex: 5;
+        }
+    }
+    
+    .accordion-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.6;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .accordion-item:hover .accordion-bg, .accordion-item.active .accordion-bg {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+    
+    .accordion-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        transition: background 0.6s ease;
+    }
+    @media (min-width: 1024px) {
+        .accordion-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+        .accordion-item:hover .accordion-gradient, .accordion-item.active .accordion-gradient {
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);
+        }
+    }
+    
+    /* 移动端独立文档流设计：折叠态与展开态互斥展示 */
+    @media (max-width: 1023px) {
+        .accordion-collapsed {
+            position: relative;
+            padding: 24px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: auto;
+            z-index: 10;
+        }
+        .accordion-collapsed .w-10 {
+            margin-bottom: 0 !important;
+            margin-right: 16px;
+            width: 32px;
+            height: 32px;
+        }
+        .accordion-expanded {
+            position: relative;
+            padding: 24px;
+            display: none; /* 默认隐藏 */
+            flex-direction: column;
+            z-index: 10;
+            animation: fadeInMenu 0.4s ease;
+        }
+        .accordion-item.active .accordion-collapsed {
+            display: none; /* 展开时隐藏默认标题栏 */
+        }
+        .accordion-item.active .accordion-expanded {
+            display: flex; /* 展开时显示详情，利用相对定位撑开高度 */
+        }
+    }
+
+    /* 桌面端绝对定位设计 (保留原有优雅动效) */
+    @media (min-width: 1024px) {
+        .accordion-collapsed {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        .accordion-item:hover .accordion-collapsed, .accordion-item.active .accordion-collapsed {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .accordion-expanded {
+            position: absolute;
+            inset: 0;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .accordion-item:hover .accordion-expanded, .accordion-item.active .accordion-expanded {
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 0.2s;
+        }
+    }
+</style>

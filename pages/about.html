@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 | 中科闻歌</title>
+    <meta name="description" content="中科闻歌是中国科学院自动化研究所孵化的人工智能“国家队”，领先的企业级人工智能技术服务商，为全球企业打造AI时代先进的业务与决策系统。">
+    <meta name="keywords" content="中科闻歌, 人工智能, 决策智能, 雅意大模型, 企业级AI">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '"Noto Sans SC"', 'sans-serif'],
+                    },
+                    colors: {
+                        modern: {
+                            bg: '#ffffff',
+                            card: '#f9f9fb',
+                            dark: '#0f172a',
+                            text: '#4b5563',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #ffffff;
+        }
+
+        /* 隐藏滚动条但允许滚动 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 动画与悬浮效果 */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+        }
+
+        /* 玻璃态样式 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* 侧边栏平滑切换 */
+        .toc-link {
+            transition: all 0.3s ease;
+        }
+        
+        /* Timeline Animations */
+        .timeline-node {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .timeline-node.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* 横向滚动条自定义 */
+        .hide-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .hide-scrollbar::-webkit-scrollbar-track {
+            background: rgba(15, 17, 26, 0.03);
+            border-radius: 4px;
+        }
+        .hide-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .hide-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-200 selection:text-blue-900 relative">
+
+    <!-- 组件容器 -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[400px] pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-white flex flex-col justify-center">
+        <!-- 炫彩渐变背景球 -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-gradient-to-br from-purple-200/50 via-pink-200/40 to-orange-100/40 blur-[80px]"></div>
+            <div class="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-blue-100/50 to-cyan-100/40 blur-[80px]"></div>
+            
+            <!-- 矢量网格纹理 -->
+            <svg class="absolute inset-0 w-full h-full opacity-60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="0.5" opacity="0.6"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hero-grid)" />
+            </svg>
+            <!-- 提亮遮罩层，保证文字易读 -->
+            <div class="absolute inset-0 bg-white/40 backdrop-blur-[1px]"></div>
+        </div>
+
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                
+                <!-- 左侧：Slogan 与公司简介 -->
+                <div class="lg:col-span-3 text-left flex flex-col lg:pt-1">
+                    <!-- Slogan 标题 -->
+                    <h1 class="w-[90.9%] text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-black tracking-tight text-slate-900 mb-6 leading-[1.4] break-words">
+                        中国科学院自动化研究所孵化的<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-500 to-fuchsia-500">人工智能“国家队”</span>
+                    </h1>
+                    
+                    <!-- 公司简介 (综合四大维度) -->
+                    <div class="w-[100%] text-justify text-sm sm:text-base text-slate-600 leading-relaxed font-medium space-y-4">
+                        <p>
+                            中科闻歌以“为全球企业打造AI时代先进的业务与决策系统”为企业愿景。依托深厚的科研底蕴，公司构建了跨模态深度语义理解、领域级社会计算建模以及知识增强预训练大模型等核心技术壁垒。
+                        </p>
+                        <p>
+                            在产品端，中科闻歌打造了具有自主知识产权的决策智能操作系统DIP，并以DOMA架构形成X-Data天湖数据平台、雅意大模型、D1智脑决策平台等核心产品，提供全栈服务能力。目前，公司的行业定位已在“人工智能+”媒宣、安全、金融、政务等领域处于国内领先地位，并正积极向医疗、能源、工业等广阔领域孵化延伸。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 右侧：权威背书与荣誉卡片 -->
+                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    <!-- Card 1 -->
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-slate-200 shadow-xl shadow-slate-200/40 flex flex-col justify-between h-40 relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start relative z-10">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="font-bold text-slate-800 text-sm">中科院</span>
+                                    <span class="px-2 py-0.5 bg-slate-800 text-white text-[10px] rounded-full">学术</span>
+                                </div>
+                                <p class="text-slate-600 text-xs font-medium">孵化科创/人工智能赛道企业</p>
+                            </div>
+                            <i data-lucide="sun" class="text-slate-200 w-10 h-10 group-hover:text-blue-100 transition-colors -mt-1 -mr-1"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-xl font-black text-slate-900 mb-0.5 tracking-tight">TOP3/TOP1</div>
+                            <div class="text-xs text-slate-500 font-medium">中国科学院科创企业先锋榜</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-slate-200 shadow-xl shadow-slate-200/40 flex flex-col justify-between h-40 relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start relative z-10">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="font-bold text-slate-800 text-sm">中国</span>
+                                    <span class="px-2 py-0.5 bg-slate-800 text-white text-[10px] rounded-full">政府</span>
+                                </div>
+                                <p class="text-slate-600 text-xs font-medium">AI大模型企业</p>
+                            </div>
+                            <i data-lucide="share-2" class="text-slate-200 w-10 h-10 group-hover:text-cyan-100 transition-colors -mt-1 -mr-1"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-xl font-black text-slate-900 mb-0.5 tracking-tight">TOP20</div>
+                            <div class="text-xs text-slate-500 font-medium">赛迪工业和信息化研究院报告</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-slate-200 shadow-xl shadow-slate-200/40 flex flex-col justify-between h-40 relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start relative z-10">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="font-bold text-slate-800 text-sm">中国</span>
+                                    <span class="px-2 py-0.5 bg-slate-800 text-white text-[10px] rounded-full">商业</span>
+                                </div>
+                                <p class="text-slate-600 text-xs font-medium">AI公司价值创造</p>
+                            </div>
+                            <i data-lucide="database" class="text-slate-200 w-10 h-10 group-hover:text-violet-100 transition-colors -mt-1 -mr-1"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-xl font-black text-slate-900 mb-0.5 tracking-tight">TOP20</div>
+                            <div class="text-xs text-slate-500 font-medium">牛津智能榜单</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-5 border border-slate-200 shadow-xl shadow-slate-200/40 flex flex-col justify-between h-40 relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div class="flex justify-between items-start relative z-10">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="font-bold text-slate-800 text-sm">中国</span>
+                                    <span class="px-2 py-0.5 bg-slate-800 text-white text-[10px] rounded-full">商业</span>
+                                </div>
+                                <p class="text-slate-600 text-xs font-medium">AI科技企业</p>
+                            </div>
+                            <i data-lucide="layers" class="text-slate-200 w-10 h-10 group-hover:text-fuchsia-100 transition-colors -mt-1 -mr-1"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-xl font-black text-slate-900 mb-0.5 tracking-tight">TOP50</div>
+                            <div class="text-xs text-slate-500 font-medium">福布斯榜单</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 py-16 grid grid-cols-1 lg:grid-cols-5 gap-12 items-start relative">
+        
+        <!-- Sticky Sidebar (Table of Contents) -->
+        <aside class="sticky top-28 col-span-1 hidden lg:block py-4">
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-6">IN THIS PAGE</div>
+            <nav class="border-l border-slate-200 flex flex-col space-y-4" id="toc-nav">
+                <a href="#timeline" class="toc-link block pl-4 py-2 border-l-2 border-blue-600 text-blue-600 font-bold transition-all hover:border-blue-400">
+                    <div class="text-base">1. 发展历程</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">AI 1.0 至 AI 3.0</div>
+                </a>
+                <a href="#team" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-blue-400 hover:text-slate-900">
+                    <div class="text-base">2. 顶尖团队</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">国家级科研天团</div>
+                </a>
+                <a href="#investors" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-blue-400 hover:text-slate-900">
+                    <div class="text-base">3. 投资机构</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">重磅资本加持</div>
+                </a>
+                <a href="#endorsements" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-blue-400 hover:text-slate-900">
+                    <div class="text-base">4. 荣誉资质</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">国家级资质与认可</div>
+                </a>
+                <a href="#dominance" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-blue-400 hover:text-slate-900">
+                    <div class="text-base">5. 核心实力</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">底层技术与架构</div>
+                </a>
+                <a href="#ecosystem" class="toc-link block pl-4 py-2 border-l-2 border-transparent text-slate-500 transition-all hover:border-blue-400 hover:text-slate-900">
+                    <div class="text-base">6. 开源生态</div>
+                    <div class="text-xs font-normal opacity-70 mt-1.5 leading-relaxed text-slate-500">开放共赢的文化</div>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="col-span-1 lg:col-span-4 w-full min-w-0">
+            
+            <!-- Timeline Section -->
+            <section id="timeline" class="scroll-mt-28 pb-16 lg:pb-24">
+                <div class="mb-10 text-left">
+                    <span class="text-cyan-600 font-bold text-sm tracking-wider uppercase mb-2 block">公司发展大事记</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-modern-dark mb-4 tracking-tight">穿越 AI 1.0 — AI 3.0 三阶段的历史沉淀</h2>
+                </div>
+
+                <!-- Stage Selectors (Horizontal) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 relative z-10">
+                    <!-- Stage 1 -->
+                    <button class="stage-btn active text-left p-6 rounded-3xl border border-blue-200 bg-blue-50 relative overflow-hidden transition-all duration-300 shadow-md transform hover:-translate-y-1" data-target="stage1" data-theme="blue">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-black text-blue-700 relative z-10">科研团队创立</h3>
+                            <span class="px-2.5 py-1 bg-blue-100 text-blue-600 text-xs font-bold rounded-full relative z-10">1995-2017</span>
+                        </div>
+                        <p class="text-slate-600 text-sm font-medium relative z-10">人工智能核心技术孵化阶段</p>
+                        <div class="absolute bottom-0 left-0 h-1.5 bg-blue-500 w-full transition-all"></div>
+                        <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-200 rounded-full opacity-20 blur-xl"></div>
+                    </button>
+
+                    <!-- Stage 2 -->
+                    <button class="stage-btn text-left p-6 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-violet-200 relative overflow-hidden transition-all duration-300 transform hover:-translate-y-1 group" data-target="stage2" data-theme="violet">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-black text-slate-700 group-[.active]:text-violet-700 relative z-10 transition-colors">产业化平台孵化</h3>
+                            <span class="px-2.5 py-1 bg-slate-100 group-[.active]:bg-violet-100 text-slate-500 group-[.active]:text-violet-600 text-xs font-bold rounded-full relative z-10 transition-colors">2017-2022</span>
+                        </div>
+                        <p class="text-slate-500 group-[.active]:text-slate-600 text-sm font-medium relative z-10 transition-colors">面向行业的专用人工智能阶段</p>
+                        <div class="absolute bottom-0 left-0 h-1.5 bg-slate-200 group-[.active]:bg-violet-500 w-full transition-all"></div>
+                        <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-violet-200 rounded-full opacity-0 group-[.active]:opacity-20 blur-xl transition-all"></div>
+                    </button>
+
+                    <!-- Stage 3 -->
+                    <button class="stage-btn text-left p-6 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-cyan-200 relative overflow-hidden transition-all duration-300 transform hover:-translate-y-1 group" data-target="stage3" data-theme="cyan">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-black text-slate-700 group-[.active]:text-cyan-700 relative z-10 transition-colors">商业化进程加速</h3>
+                            <span class="px-2.5 py-1 bg-slate-100 group-[.active]:bg-cyan-100 text-slate-500 group-[.active]:text-cyan-600 text-xs font-bold rounded-full relative z-10 transition-colors">2022至今</span>
+                        </div>
+                        <p class="text-slate-500 group-[.active]:text-slate-600 text-sm font-medium relative z-10 transition-colors">通用人工智能阶段</p>
+                        <div class="absolute bottom-0 left-0 h-1.5 bg-slate-200 group-[.active]:bg-cyan-500 w-full transition-all"></div>
+                        <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-cyan-200 rounded-full opacity-0 group-[.active]:opacity-20 blur-xl transition-all"></div>
+                    </button>
+                </div>
+
+                <!-- Horizontal Timeline Container -->
+                <div class="relative w-full">
+                    <!-- Gradient Fade Edges -->
+                    <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none hidden sm:block"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden sm:block"></div>
+                    
+                    <div class="overflow-x-auto hide-scrollbar pb-10 pt-4 snap-x snap-mandatory" id="timeline-scroll-container">
+                        <!-- Dynamic Content -->
+                        <div id="timeline-content" class="flex flex-nowrap min-w-full w-max gap-0 px-2 sm:px-4 items-stretch">
+                            <!-- Content injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Team Section -->
+            <section id="team" class="scroll-mt-28 py-16 lg:py-24 border-t border-slate-200">
+                <div class="mb-10 text-left">
+                    <span class="text-fuchsia-600 font-bold text-sm tracking-wider uppercase mb-2 block">顶尖科研团队</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-modern-dark tracking-tight leading-snug">中国科学院科学家团队创立<br>集聚清北、中国科学院AI领域优秀人才</h2>
+                </div>
+
+                <!-- 创始团队与人才结构 -->
+                <div class="mt-8 space-y-6">
+                    <!-- 创始人卡片区 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- 王磊 博士 -->
+                        <div class="bg-gradient-to-br from-blue-50/80 to-white p-6 rounded-3xl border border-blue-100/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-28 h-40 rounded-xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200 shadow-sm">
+                                    <img src="../assets/images/wanglei.png" alt="王磊博士" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-black text-slate-900 flex items-end gap-1">王磊 <span class="text-sm font-bold text-blue-600 mb-0.5">博士</span></h3>
+                                    <p class="text-xs font-bold text-slate-500 mt-1">董事长、创始人</p>
+                                </div>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-2 font-medium">
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-blue-400 mt-1.5 shrink-0"></div>中国科学院自动化所研究员</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-blue-400 mt-1.5 shrink-0"></div>多项新一代人工智能国家重点研发项目课题负责人</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-blue-400 mt-1.5 shrink-0"></div>人工智能安全与超级对齐北京市重点实验室副主任、北京市人工智能安全与治理研究院副院长、北京市政协委员、入选海英人才</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-blue-400 mt-1.5 shrink-0"></div>获“吴文俊”人工智能创新奖、公安部科技进步奖、中国自动化学会科技进步奖、北京市科技进步奖、全国青年岗位能手、北京市劳模</li>
+                            </ul>
+                        </div>
+
+                        <!-- 罗引 博士 -->
+                        <div class="bg-gradient-to-br from-violet-50/80 to-white p-6 rounded-3xl border border-violet-100/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-28 h-40 rounded-xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200 shadow-sm">
+                                    <img src="../assets/images/luoyin.png" alt="罗引博士" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-black text-slate-900 flex items-end gap-1">罗引 <span class="text-sm font-bold text-violet-600 mb-0.5">博士</span></h3>
+                                    <p class="text-xs font-bold text-slate-500 mt-1">CEO、联合创始人</p>
+                                </div>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-2 font-medium">
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-violet-400 mt-1.5 shrink-0"></div>中国科学院自动化所研究员</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-violet-400 mt-1.5 shrink-0"></div>国家大数据重大项目首席架构师</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-violet-400 mt-1.5 shrink-0"></div>王选新闻科学技术奖一等奖、王选新闻科学技术奖人才奖</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-violet-400 mt-1.5 shrink-0"></div>入选北京市科技新星计划、“京琅琊”青年创新人才</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-violet-400 mt-1.5 shrink-0"></div>中国科学院Al for Science技术负责人之一</li>
+                            </ul>
+                        </div>
+
+                        <!-- 曾大军 教授 -->
+                        <div class="bg-gradient-to-br from-cyan-50/80 to-white p-6 rounded-3xl border border-cyan-100/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-28 h-40 rounded-xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200 shadow-sm">
+                                    <img src="../assets/images/zengdajun.png" alt="曾大军教授" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-black text-slate-900 flex items-end gap-1">曾大军 <span class="text-sm font-bold text-cyan-600 mb-0.5">教授</span></h3>
+                                    <p class="text-xs font-bold text-slate-500 mt-1">联合创始人</p>
+                                </div>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-2 font-medium">
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-cyan-400 mt-1.5 shrink-0"></div>多模态人工智能全国重点实验室副主任</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-cyan-400 mt-1.5 shrink-0"></div>中国科学院自动化所副所长、研究员、博士生导师</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-cyan-400 mt-1.5 shrink-0"></div>国家杰青、国家创新研究群体首席科学家、IEEE和AAAS双会士</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-cyan-400 mt-1.5 shrink-0"></div>中科大少年班本科、卡内基•梅隆大学博士、美国归国终身教授</li>
+                                <li class="flex items-start gap-1.5"><div class="w-1 h-1 rounded-full bg-cyan-400 mt-1.5 shrink-0"></div>专注人工智能、杜会计算和决策智能研究，发表学术论文400篇，Google学术总引用2万+次</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 人才结构数据区 -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-blue-600 mb-1">150<span class="text-xl">+</span></div>
+                            <div class="text-sm font-bold text-slate-600">AI工程师</div>
+                        </div>
+                        <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-violet-600 mb-1">170<span class="text-xl">+</span></div>
+                            <div class="text-sm font-bold text-slate-600">博硕人才</div>
+                        </div>
+                        <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-cyan-600 mb-1">500<span class="text-xl">+</span></div>
+                            <div class="text-sm font-bold text-slate-600">员工总数</div>
+                        </div>
+                        <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition-shadow">
+                            <div class="text-3xl font-black text-fuchsia-600 mb-1">40<span class="text-xl">%+</span></div>
+                            <div class="text-sm font-bold text-slate-600">管理团队硕博以上学历</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investors Section (按照图片设计的机构卡片) -->
+            <section id="investors" class="scroll-mt-28 py-16 lg:py-24 border-t border-slate-200">
+                <div class="mb-10 text-left">
+                    <span class="text-amber-500 font-bold text-sm tracking-wider uppercase mb-2 block">重磅投资机构加持</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-modern-dark tracking-tight leading-snug">中国科学院作为主要股东持股孵化<br>国资股东累计占股超50%</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                    
+                    <!-- Item 1 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">中国互联网投资基金</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">CIIF</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            中央网信办和财政部共同发起<br>国家级投资机构
+                        </p>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">中关村科学城</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            海淀区国有资产投资集团背景<br>北京市知名投资基金
+                        </p>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">国科资本</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">CAS Capital</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            中国科学院旗下投资基金
+                        </p>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-[15px] sm:text-base tracking-wide text-center leading-snug">北京市人工智能产业<br>投资基金</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            北京市政府<br>北京国有资本运营管理有限公司
+                        </p>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">盈富泰克</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">INFOTECH</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            财政部背景<br>国家自主创新和战略新兴产业投资基金
+                        </p>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">深创投</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">SCGC</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            深圳政府国资背景<br>国内知名创投基金
+                        </p>
+                    </div>
+
+                    <!-- Item 7 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">中科创星</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">CASSTAR</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            国内知名硬科技孵化基金
+                        </p>
+                    </div>
+
+                    <!-- Item 8 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">金科君创资本</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">JC CAPITAL</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            科技部背景新兴产业投资基金
+                        </p>
+                    </div>
+
+                    <!-- Item 9 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">国开金融</span>
+                                <span class="text-[8px] sm:text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-0.5 text-center leading-tight">CHINA DEVELOPMENT BANK CAPITAL</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            国家开发银行设立的投资基金
+                        </p>
+                    </div>
+
+                    <!-- Item 10 -->
+                    <div class="flex flex-col group">
+                        <div class="bg-white border border-slate-100 rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 relative flex items-center justify-center h-20 sm:h-24 mb-4 overflow-hidden px-4">
+                            <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500"></div>
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="font-bold text-slate-800 text-base sm:text-lg tracking-wide text-center">央视融媒体基金</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-[13px] text-slate-500 text-center leading-relaxed font-medium px-2">
+                            中央广播电视总台背景<br>产业投资基金
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Endorsements Section (荣誉资质) -->
+            <section id="endorsements" class="scroll-mt-28 py-16 lg:py-24 border-t border-slate-200">
+                <div class="mb-10 text-left">
+                    <span class="text-rose-500 font-bold text-sm tracking-wider uppercase mb-2 block">荣誉资质</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-modern-dark tracking-tight">荣获多项殊荣，赢得市场口碑</h2>
+                </div>
+
+                <!-- 1. 证书图片占位区 (后续替换真实图片) -->
+                <div class="mb-12">
+                    <h3 class="text-sm font-bold text-slate-400 mb-4 px-1">证书展示</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+                        <!-- 占位框 x 8 -->
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 1</span>
+                            <!-- 替换图片示例: <img src="您的图片地址" class="absolute inset-0 w-full h-full object-cover"> -->
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 2</span>
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 3</span>
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 4</span>
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 5</span>
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 6</span>
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 7</span>
+                        </div>
+                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                            <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium opacity-60">证书大图占位 8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 荣誉奖项区 (使用居中完整橄榄枝花环设计) -->
+                <div>
+                    <h3 class="text-sm font-bold text-slate-400 mb-4 px-1">获得荣誉</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+                        
+                        <!-- Item 1 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">国家专精特新<br>“小巨人”企业</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">国家级<br>高新技术企业</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">中关村<br>前沿技术企业</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">北京市<br>知识产权试点单位</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">北京市市级<br>企业技术中心</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">中关村<br>高新技术企业</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 7 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">DCMM数据管理能力<br>成熟度稳健级(3级)</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                        <!-- Item 8 -->
+                        <div class="bg-white border border-slate-100 rounded-3xl p-4 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-row items-center justify-center group h-28 sm:h-32 px-4">
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto">
+                            </div>
+                            <h4 class="text-[13px] sm:text-sm font-bold text-slate-800 text-center leading-snug px-4 flex-1">CMMI 5级认证</h4>
+                            <div class="flex items-center justify-center text-amber-500 pointer-events-none">
+                                <img src="/assets/svg/olive-branch.svg" alt="橄榄枝" class="h-14 w-auto transform scale-x-[-1]">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dominance Section (Stats + Features) -->
+            <section id="dominance" class="scroll-mt-28 py-16 lg:py-24 border-t border-slate-200">
+                <div class="mb-10 text-left">
+                    <span class="text-blue-600 font-bold text-sm tracking-wider uppercase mb-2 block">深耕决策智能与大模型底层技术，以科研驱动企业持续发展</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-modern-dark tracking-tight">聚焦核心技术，构建极高技术壁垒</h2>
+                </div>
+
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-start">
+                    <!-- Tech Card 1 -->
+                    <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col transform hover:-translate-y-1 cursor-pointer" onclick="toggleTechCard(this)">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-blue-500 to-cyan-400 relative overflow-hidden flex items-center justify-center transition-transform duration-700">
+                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                            <div class="relative z-10 text-white flex flex-col items-center transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="file-text" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3 drop-shadow-md"></i>
+                                <h3 class="text-xl sm:text-2xl font-black tracking-wider">100+ 领先发明专利获授权</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <p class="text-slate-500 leading-relaxed text-sm font-medium min-h-[40px]">
+                                涵盖多模态数据融合、跨模态语义表征与多智能体建模等核心领域
+                            </p>
+                            
+                            <!-- 展开详细内容区 (默认隐藏) -->
+                            <div class="tech-card-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+                                <div class="pt-5 mt-5 border-t border-slate-100">
+                                    <h4 class="text-sm font-bold text-slate-800 mb-2 flex items-center"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></div>核心优势与细节</h4>
+                                    <p class="text-[13px] text-slate-500 leading-relaxed mb-3 min-h-[120px]">
+                                        构建覆盖多模态数据融合、跨模态语义表征、多智能体协同决策等前沿领域的专利矩阵，形成从数据感知、知识建模到智能决策的完整技术护城河，核心技术获国家级知识产权保护，支撑企业级AI产品持续领先。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 交互按钮 -->
+                            <div class="mt-6 flex items-center justify-between text-blue-600 font-bold text-sm pt-3 border-t border-transparent group-hover:border-slate-50 transition-colors">
+                                <span class="tech-card-btn-text transition-colors">了解更多</span>
+                                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                                    <i data-lucide="chevron-down" class="w-4 h-4 tech-card-icon transition-transform duration-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Card 2 -->
+                    <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col transform hover:-translate-y-1 cursor-pointer" onclick="toggleTechCard(this)">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-rose-400 to-orange-500 relative overflow-hidden flex items-center justify-center transition-transform duration-700">
+                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                            <div class="relative z-10 text-white flex flex-col items-center transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="book" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3 drop-shadow-md"></i>
+                                <h3 class="text-xl sm:text-2xl font-black tracking-wider">120+ 顶级期刊会议论文</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <p class="text-slate-500 leading-relaxed text-sm font-medium min-h-[40px]">
+                                ESI第一序列研究团队，成果获顶尖学者高度评价
+                            </p>
+
+                            <!-- 展开详细内容区 (默认隐藏) -->
+                            <div class="tech-card-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+                                <div class="pt-5 mt-5 border-t border-slate-100">
+                                    <h4 class="text-sm font-bold text-slate-800 mb-2 flex items-center"><div class="w-1.5 h-1.5 rounded-full bg-rose-500 mr-2"></div>核心优势与细节</h4>
+                                    <p class="text-[13px] text-slate-500 leading-relaxed mb-3 min-h-[120px]">
+                                        团队累计发表学术论文400余篇，总引用量超2万次，多篇成果发表于ACL、CVPR、NeurIPS、KDD等国际顶级AI学术会议，提出基于认知激活及量子启发的语义增强表示模型，开创性研究获学术界广泛认可，奠定决策智能领域国际领先地位。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 交互按钮 -->
+                            <div class="mt-6 flex items-center justify-between text-rose-500 font-bold text-sm pt-3 border-t border-transparent group-hover:border-slate-50 transition-colors">
+                                <span class="tech-card-btn-text transition-colors">了解更多</span>
+                                <div class="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center group-hover:bg-rose-100 transition-colors">
+                                    <i data-lucide="chevron-down" class="w-4 h-4 tech-card-icon transition-transform duration-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Card 3 -->
+                    <div class="group rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col transform hover:-translate-y-1 md:col-span-2 xl:col-span-1 cursor-pointer" onclick="toggleTechCard(this)">
+                        <div class="h-40 sm:h-48 bg-gradient-to-br from-violet-500 to-fuchsia-500 relative overflow-hidden flex items-center justify-center transition-transform duration-700">
+                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                            <div class="relative z-10 text-white flex flex-col items-center transform group-hover:scale-110 transition-transform">
+                                <i data-lucide="briefcase" class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3 drop-shadow-md"></i>
+                                <h3 class="text-xl sm:text-2xl font-black tracking-wider">40+ 国家级、省部级项目</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                            <p class="text-slate-500 leading-relaxed text-sm font-medium min-h-[40px]">
+                                参与建设人工智能安全与超级对齐北京市重点实验室、中医四诊数智装备研发北京市重点实验室
+                            </p>
+
+                            <!-- 展开详细内容区 (默认隐藏) -->
+                            <div class="tech-card-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+                                <div class="pt-5 mt-5 border-t border-slate-100">
+                                    <h4 class="text-sm font-bold text-slate-800 mb-2 flex items-center"><div class="w-1.5 h-1.5 rounded-full bg-violet-500 mr-2"></div>核心优势与细节</h4>
+                                    <p class="text-[13px] text-slate-500 leading-relaxed mb-3 min-h-[120px]">
+                                        承担40+国家级、省部级项目，包括科技部20+项目（如语言新闻选题智能决策平台、冬奥会事全球传播数据融合等）、工信部/发改委10+项目、中科院10+项目，主导建设多个北京市重点实验室，入选北京市人工智能应用场景联合研发平台，参与大模型关键技术研究及示范应用。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 交互按钮 -->
+                            <div class="mt-6 flex items-center justify-between text-violet-600 font-bold text-sm pt-3 border-t border-transparent group-hover:border-slate-50 transition-colors">
+                                <span class="tech-card-btn-text transition-colors">了解更多</span>
+                                <div class="w-8 h-8 rounded-full bg-violet-50 flex items-center justify-center group-hover:bg-violet-100 transition-colors">
+                                    <i data-lucide="chevron-down" class="w-4 h-4 tech-card-icon transition-transform duration-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Open Source Ecosystem -->
+            <section id="ecosystem" class="scroll-mt-28 py-16 lg:py-24 border-t border-slate-200">
+                <!-- 开源生态 (NEW DESIGN) -->
+                <div class="bg-gradient-to-br from-[#1E1A3D] via-[#15122F] to-[#0D0B1F] rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden border border-white/5">
+                    <!-- Top Header & Buttons -->
+                    <div class="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6 xl:gap-8 mb-12 relative z-10">
+                        <div class="w-full">
+                            <h3 class="text-2xl md:text-4xl font-bold text-white mb-4 tracking-tight text-left w-full whitespace-nowrap">秉持开源文化理念，代码、模型向每一位开发者开放</h3>
+                            <p class="text-[#8B89A4] text-sm sm:text-base font-medium">携手全球开发者，共建繁荣的 AI 原生应用创新生态。</p>
+                        </div>
+                        <div class="flex flex-wrap gap-4 shrink-0">
+                            <a href="#" class="inline-flex items-center px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors text-white text-sm font-bold shadow-sm">
+                                <i data-lucide="github" class="w-4 h-4 mr-2"></i> wenge-research
+                            </a>
+                            <a href="#" class="inline-flex items-center px-6 py-3 rounded-full border border-[#EAB308]/30 bg-[#EAB308]/5 hover:bg-[#EAB308]/10 transition-colors text-[#FACC15] text-sm font-bold shadow-sm">
+                                <span class="mr-2 text-base leading-none">🤗</span> Hugging Face
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
+                            <!-- Card 1 -->
+                            <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-6 hover:bg-white/[0.06] transition-all duration-300 group">
+                                <div class="bg-[#1C1F4A] rounded-2xl h-24 flex items-center justify-center mb-6 border border-white/5 group-hover:scale-[1.02] transition-transform">
+                                    <span class="text-2xl font-black text-white tracking-widest">YAYI</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-2">YAYI 开源</h4>
+                                <p class="text-[#8B89A4] text-xs sm:text-sm leading-relaxed font-medium line-clamp-2">提供多参数量级的基础大模型，支持全...</p>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-6 hover:bg-white/[0.06] transition-all duration-300 group">
+                                <div class="bg-[#241A41] rounded-2xl h-24 flex items-center justify-center mb-6 border border-white/5 group-hover:scale-[1.02] transition-transform">
+                                    <span class="text-xl font-black text-white tracking-widest">YAYI UIE</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-2">YAYI UIE 开源</h4>
+                                <p class="text-[#8B89A4] text-xs sm:text-sm leading-relaxed font-medium line-clamp-2">全网最大信息抽取指令数据集之一，极...</p>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-6 hover:bg-white/[0.06] transition-all duration-300 group">
+                                <div class="bg-[#182341] rounded-2xl h-24 flex items-center justify-center mb-6 border border-white/5 group-hover:scale-[1.02] transition-transform">
+                                    <span class="text-xl font-black text-white tracking-widest">X-Agent</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-2">智川X-Agent 开源</h4>
+                                <p class="text-[#8B89A4] text-xs sm:text-sm leading-relaxed font-medium line-clamp-2">强大的智能体构建框架，让开发者以低...</p>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-6 hover:bg-white/[0.06] transition-all duration-300 group">
+                                <div class="bg-[#2B1B2C] rounded-2xl h-24 flex items-center justify-center mb-6 border border-white/5 group-hover:scale-[1.02] transition-transform">
+                                    <span class="text-lg font-black text-white tracking-wider">DeepSeek-671B</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-2">首批 DeepSeek<br>全参数微调</h4>
+                                <p class="text-[#8B89A4] text-xs sm:text-sm leading-relaxed font-medium line-clamp-2 mt-2">开源全球首批 DeepSeek 671B...</p>
+                        </div>
+                    </div>
+
+                    <!-- Ambient Glow -->
+                    <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#4C3B8A] rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+                    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-[#2B3B8A] rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 组件容器 -->
+    <div id="footer-container"></div>
+
+    <!-- 组件加载器 -->
+    <script src="/components/loader.js"></script>
+
+    <!-- JS & Interaction -->
+    <script>
+        // 等待组件加载完成后执行页面脚本
+        window.addEventListener('componentsLoaded', function() {
+            // --- Tech Card Toggle Logic (核心实力卡片展开交互) ---
+            window.toggleTechCard = function(card) {
+            const content = card.querySelector('.tech-card-content');
+            const icon = card.querySelector('.tech-card-icon');
+            const btnText = card.querySelector('.tech-card-btn-text');
+
+            if (content.classList.contains('max-h-0')) {
+                // 展开状态
+                content.classList.remove('max-h-0', 'opacity-0');
+                content.classList.add('max-h-[800px]', 'opacity-100'); // 提供足够的空间容纳详细内容
+                icon.classList.add('rotate-180');
+                btnText.textContent = '收起内容';
+                card.classList.add('ring-2', 'ring-slate-100'); // 展开时给一个轻微的高亮外环
+            } else {
+                // 收起状态
+                content.classList.add('max-h-0', 'opacity-0');
+                content.classList.remove('max-h-[800px]', 'opacity-100');
+                icon.classList.remove('rotate-180');
+                btnText.textContent = '了解更多';
+                card.classList.remove('ring-2', 'ring-slate-100');
+            }
+        }
+
+        // Data for Timeline
+        const timelineData = {
+            stage1: {
+                themeColor: 'blue',
+                gradient: 'from-blue-300 via-blue-500 to-transparent',
+                events: [
+                    { year: '1995', text: '学术带头人曾大军教授在卡内基梅隆大学开启人工智能技术研究', image: null },
+                    { year: '2006', text: '中国科学院科研团队成立专注人工智能技术创新公司，创始人相继加入团队', image: null },
+                    { year: '2017.03', text: '响应国家和中科院科技成果转化政策成立中科闻歌', image: '' }
+                ]
+            },
+            stage2: {
+                themeColor: 'violet',
+                gradient: 'from-violet-300 via-violet-500 to-transparent',
+                events: [
+                    { year: '2018', text: '推出DIOS认知与决策智能基础平台，发布AI算法平台“天湖”数据操作系统“闻海”完成A轮融资', image: '' },
+                    { year: '2019', text: '推出领域AI系统应用 媒宣-红旗、舆情-晴天 金融-天镜完成B轮融资', image: null },
+                    { year: '2020', text: '完成C轮融资', image: null },
+                    { year: '2021', text: '推出DIOS 2.0 认知与决策智能基础平台，发布AI+媒宣、AI+金融、AI+治理、AI+安全等领域解决方案 完成D轮融资', image: '' },
+                    { year: '2022', text: '完成D轮融资', image: null }
+                ]
+            },
+            stage3: {
+                themeColor: 'cyan',
+                gradient: 'from-cyan-300 via-cyan-500 to-transparent',
+                events: [
+                    { year: '2023', text: '推出 DIOS 3.0决策智能操作系统，相继发布雅意大模型1.0 2.0', image: '' },
+                    { year: '2024', text: '发布优雅YOYA多模态大模型，完成新一轮融资，累计超10亿元', image: '' },
+                    { year: '2025', text: '推出智川X-Agent 一站式智能体开发平台', image: null },
+                    { year: '2026', text: '发布DIP决策智能操作系统，发布雅意大模型3.0', image: null }
+                ]
+            }
+        };
+
+        // Render Timeline Nodes (HORIZONTAL LOGIC)
+        function renderTimeline(stageKey) {
+            const container = document.getElementById('timeline-content');
+            if (!container) return; // Added check here
+            
+            const data = timelineData[stageKey];
+            
+            container.innerHTML = '';
+            
+            data.events.forEach((item, index) => {
+                const colorClasses = {
+                    blue: { text: 'text-blue-600', bg: 'bg-blue-500', shadow: 'shadow-blue-500/40', borderHover: 'group-hover:border-blue-300', gradient: 'from-blue-400 to-blue-200' },
+                    violet: { text: 'text-violet-600', bg: 'bg-violet-500', shadow: 'shadow-violet-500/40', borderHover: 'group-hover:border-violet-300', gradient: 'from-violet-400 to-violet-200' },
+                    cyan: { text: 'text-cyan-600', bg: 'bg-cyan-500', shadow: 'shadow-cyan-500/40', borderHover: 'group-hover:border-cyan-300', gradient: 'from-cyan-400 to-cyan-200' },
+                }[data.themeColor];
+
+                let imageHtml = '';
+                if (item.image !== null) {
+                    imageHtml = `
+                        <div class="mt-4 w-full h-28 sm:h-32 bg-slate-100 rounded-xl flex items-center justify-center border border-slate-200 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-50 opacity-50"></div>
+                            <span class="text-slate-400 text-xs font-medium relative z-10 flex flex-col items-center">
+                                <i data-lucide="image" class="w-5 h-5 mb-1 opacity-50"></i>
+                                ${item.image}
+                            </span>
+                        </div>
+                    `;
+                }
+
+                // Is last item? Hide the connecting line segment
+                const isLast = index === data.events.length - 1;
+                const lineHtml = isLast ? '' : `<div class="absolute left-7 top-1/2 -translate-y-1/2 w-[calc(100%-8px)] h-[3px] bg-gradient-to-r ${colorClasses.gradient} opacity-40 z-0"></div>`;
+
+                const nodeHtml = `
+                    <div class="relative flex-none w-[280px] sm:w-[320px] timeline-node group snap-center flex flex-col px-2">
+                        <!-- Year -->
+                        <div class="pl-5 mb-2 h-[40px] flex items-end">
+                            <h3 class="text-2xl md:text-3xl font-black ${colorClasses.text} tracking-tight group-hover:-translate-y-1 transition-transform">${item.year}</h3>
+                        </div>
+                        
+                        <!-- Timeline Node & Connecting Line -->
+                        <div class="relative w-full h-8 flex items-center mb-4">
+                            ${lineHtml}
+                            <div class="absolute left-5 w-4 h-4 rounded-full ${colorClasses.bg} border-[3px] border-white shadow-[0_0_8px_rgba(0,0,0,0.15)] z-10 group-hover:scale-125 transition-transform duration-300"></div>
+                        </div>
+
+                        <!-- Content Card -->
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 ${colorClasses.borderHover} transition-all duration-300 hover:shadow-md h-full flex flex-col">
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium flex-1">${item.text}</p>
+                            ${imageHtml}
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', nodeHtml);
+            });
+
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+
+            // Trigger animations
+            setTimeout(() => {
+                const nodes = container.querySelectorAll('.timeline-node');
+                nodes.forEach((node, idx) => {
+                    setTimeout(() => {
+                        node.classList.add('show');
+                    }, idx * 100); // Faster staggered fade in for horizontal
+                });
+            }, 50);
+            
+            // Reset Scroll position when changing tabs
+            const scrollContainer = document.getElementById('timeline-scroll-container');
+            if (scrollContainer) {
+                scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Timeline Interactions
+        const stageBtns = document.querySelectorAll('.stage-btn');
+        
+        // Initialize Timeline - Check if element exists before calling
+        if (document.getElementById('timeline-content')) {
+            renderTimeline('stage1');
+        }
+
+        stageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all buttons
+                stageBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-' + b.dataset.theme + '-50', 'border-' + b.dataset.theme + '-200');
+                    b.classList.add('bg-white', 'border-slate-100');
+                });
+
+                // Add active styling to clicked button
+                const theme = btn.dataset.theme;
+                btn.classList.add('active', `bg-${theme}-50`, `border-${theme}-200`);
+                btn.classList.remove('bg-white', 'border-slate-100');
+
+                // Render Content
+                const target = btn.getAttribute('data-target');
+                renderTimeline(target);
+            });
+        });
+
+        // TOC Scroll Spy Logic
+        const sectionsObj = document.querySelectorAll('main section[id]');
+        const navLinksObj = document.querySelectorAll('.toc-link');
+
+        let isClickScrolling = false;
+        let scrollTimeout = null;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -50% 0px',
+            threshold: 0
+        };
+
+        const tocObserver = new IntersectionObserver((entries) => {
+            if (isClickScrolling) return;
+            
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinksObj.forEach(link => {
+                        link.classList.remove('text-blue-600', 'font-bold', 'border-blue-600');
+                        link.classList.add('text-slate-500', 'border-transparent');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.remove('text-slate-500', 'border-transparent');
+                            link.classList.add('text-blue-600', 'font-bold', 'border-blue-600');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sectionsObj.forEach(sec => tocObserver.observe(sec));
+
+        navLinksObj.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                isClickScrolling = true;
+                clearTimeout(scrollTimeout);
+                
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    navLinksObj.forEach(l => {
+                        l.classList.remove('text-blue-600', 'font-bold', 'border-blue-600');
+                        l.classList.add('text-slate-500', 'border-transparent');
+                    });
+                    link.classList.remove('text-slate-500', 'border-transparent');
+                    link.classList.add('text-blue-600', 'font-bold', 'border-blue-600');
+
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    try {
+                        history.pushState(null, null, `#${targetId}`);
+                    } catch (err) {
+                        console.warn('history.pushState not supported in this sandbox:', err);
+                    }
+
+                    scrollTimeout = setTimeout(() => {
+                        isClickScrolling = false;
+                    }, 800);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
