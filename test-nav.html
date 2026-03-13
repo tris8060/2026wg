@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏测试</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            padding-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <h1 class="text-2xl font-bold text-center mb-8">导航栏测试</h1>
+    
+    <!-- 测试1：直接嵌入导航栏 -->
+    <div class="mb-10 p-4 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">测试1：直接嵌入导航栏</h2>
+        <!-- 全局导航 -->
+        <nav class="fixed w-full top-0 z-[9999] bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+            <div class="w-full mx-auto px-6 lg:px-12 xl:px-16">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center z-[10000]">
+                        <a href="/" class="block">
+                            <img src="https://zmt.wengegroup.com/cityMini/site/static/wenge/assets/image/zkwg-logo.svg" alt="中科闻歌" class="h-[22px] w-auto">
+                        </a>
+                    </div>
+
+                    <!-- 移动端汉堡菜单按钮 -->
+                    <button id="mobileMenuBtn" class="lg:hidden p-2 -mr-2 text-gray-600 hover:text-indigo-600 transition-colors z-[10000] outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+
+                    <!-- Center Links (桌面端导航) -->
+                    <div class="hidden lg:flex space-x-6 xl:space-x-10 items-center h-full">
+                        <!-- 1. DIOS决策智能操作系统 (升级为超级菜单) -->
+                        <div class="group h-full flex items-center">
+                            <button class="text-sm font-semibold text-gray-600 group-hover:text-indigo-600 inline-flex items-center h-full outline-none transition-colors">
+                                DIOS决策智能操作系统 <i data-lucide="chevron-down" class="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform"></i>
+                            </button>
+                        </div>
+                        <!-- 2. 行业产品 -->
+                        <div class="group h-full flex items-center">
+                            <button class="text-sm font-semibold text-gray-600 group-hover:text-indigo-600 inline-flex items-center h-full outline-none transition-colors">
+                                行业产品 <i data-lucide="chevron-down" class="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform"></i>
+                            </button>
+                        </div>
+                        <!-- 3. 解决方案 -->
+                        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-indigo-600 transition-colors h-full flex items-center">
+                            解决方案
+                        </a>
+                        <!-- 4. 关于我们 -->
+                        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-indigo-600 transition-colors h-full flex items-center">
+                            关于我们
+                        </a>
+                        <!-- 5. 新闻中心 -->
+                        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-indigo-600 transition-colors h-full flex items-center">
+                            新闻中心
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <p class="text-gray-600">如果能看到顶部的导航栏，说明导航栏HTML本身没有问题。</p>
+    </div>
+    
+    <!-- 测试2：使用组件加载器 -->
+    <div class="p-4 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">测试2：使用组件加载器</h2>
+        <div id="test-navbar-container"></div>
+        <p class="text-gray-600">如果能看到导航栏，说明组件加载器正常工作。</p>
+    </div>
+    
+    <script src="./components/loader.js"></script>
+    <script>
+        // 测试组件加载器
+        document.addEventListener('DOMContentLoaded', async () => {
+            const loader = new ComponentLoader();
+            await loader.loadComponent('navbar', '#test-navbar-container');
+            console.log('导航栏加载完成');
+        });
+    </script>
+</body>
+</html>
