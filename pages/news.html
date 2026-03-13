@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>洞悉闻歌动向，探索AI精彩 - 中科闻歌</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../components/loader.js"></script>
     <script>
@@ -13,7 +13,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', '"Noto Sans SC"', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -39,7 +39,7 @@
             scroll-behavior: smooth;
         }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #fafafa;
             color: #0f172a;
             -webkit-font-smoothing: antialiased;
@@ -52,6 +52,7 @@
         .gradient-text {
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         /* 超级菜单内容淡入动画 */
@@ -443,83 +444,6 @@
             </section>
         </main>
     </div>
-
-    <!-- Footer (精简高度版) -->
-    <footer class="bg-modern-dark text-gray-300 py-10 lg:py-16 rounded-t-2xl mt-6 lg:mt-12 mx-4 sm:mx-6 lg:mx-8 mb-6">
-        <div class="max-w-[1600px] mx-auto px-4 lg:px-12 xl:px-16">
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-y-8 gap-x-4 lg:gap-12 mb-8 lg:mb-16">
-                <div class="col-span-2 lg:col-span-2 pr-4 lg:pr-0">
-                    <div class="flex items-center mb-4 lg:mb-6">
-                        <img src="https://zmt.wengegroup.com/cityMini/site/static/wenge/assets/image/zkwg-logo-white.svg" alt="中科闻歌" class="h-6 lg:h-7 w-auto">
-                    </div>
-                    <p class="text-gray-400 font-medium mb-6 text-xs lg:text-sm leading-relaxed max-w-sm">源自中国科学院自动化研究所，致力于成为全球领先的认知与决策智能技术服务商。</p>
-                    <div class="space-y-2 lg:space-y-3">
-                        <div class="flex items-center text-xs lg:text-sm font-bold bg-white/10 w-max px-3 py-1.5 lg:px-4 lg:py-2 rounded-full">
-                            <i data-lucide="phone" class="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2"></i> 400-093-5556
-                        </div>
-                        <div class="flex items-center text-xs lg:text-sm font-bold bg-white/10 w-max px-3 py-1.5 lg:px-4 lg:py-2 rounded-full">
-                            <i data-lucide="mail" class="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2"></i> sales@wenge.com
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">产品</h4>
-                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">X-Data 操作系统</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">雅意 Yayi 大模型</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">优雅 Yoya 多模态</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">智川 X-Agent</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">D1 决策大脑</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">解决方案</h4>
-                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">媒体与传播</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">政务与安全</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">金融与风控</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">智慧医疗康养</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">关于</h4>
-                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">关于闻歌</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">资质荣誉</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">闻歌资讯</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">招贤纳士</h4>
-                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">人才理念</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">社会招聘</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">校园招聘</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white text-xs lg:text-sm font-black mb-3 lg:mb-6 uppercase tracking-wider">社交媒体</h4>
-                    <ul class="space-y-2 lg:space-y-4 text-xs lg:text-sm font-medium text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="message-circle" class="w-3.5 h-3.5 mr-1.5"></i> 微信</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="video" class="w-3.5 h-3.5 mr-1.5"></i> 抖音</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5"></i> 知乎</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-6 lg:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center text-xs lg:text-sm font-medium text-gray-500 gap-3 md:gap-0">
-                <p>&copy; 2026 北京中科闻歌科技股份有限公司 版权所有</p>
-                <div class="space-x-4 lg:space-x-6">
-                    <span>京ICP备17022028号</span>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- Interactive Script -->
     <script>

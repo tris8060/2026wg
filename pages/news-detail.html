@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中关村杂志专访：罗引与中科闻歌的"科研远征" - 中科闻歌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '"Noto Sans SC"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            900: '#7f1d1d',
+                        },
+                        modern: {
+                            bg: '#ffffff',
+                            card: '#f9f9fb',
+                            dark: '#0f172a',
+                            text: '#4b5563',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #fafafa;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* 文章内容样式 */
+        .article-content {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #374151;
+        }
+        .article-content p {
+            margin-bottom: 1.5em;
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 2em 0 1em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 1.5em 0 0.75em;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5em;
+            padding-left: 1.5em;
+        }
+        .article-content li {
+            margin-bottom: 0.5em;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #ef4444;
+            padding-left: 1.5em;
+            margin: 1.5em 0;
+            color: #6b7280;
+            font-style: italic;
+        }
+        .article-content img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 2em 0;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+        }
+        .article-content a {
+            color: #dc2626;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .article-content a:hover {
+            border-bottom-color: #dc2626;
+        }
+        
+        /* 分享按钮动画 */
+        .share-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* 标签样式 */
+        .tag {
+            transition: all 0.2s;
+        }
+        .tag:hover {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+        
+        /* 侧边栏卡片悬浮效果 */
+        .sidebar-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .sidebar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+        }
+        
+        /* 进度条 */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+            z-index: 10000;
+            transition: width 0.1s;
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 目录高亮 */
+        .toc-link {
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+        .toc-link.active {
+            border-left-color: #dc2626;
+            color: #dc2626;
+            background-color: #fef2f2;
+        }
+        
+        /* 玻璃态样式 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* 隐藏滚动条但允许滚动 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-500 selection:text-white">
+
+    <!-- 导航栏容器 -->
+    <div id="nav-container"></div>
+
+    <!-- Hero Section - 文章头部 -->
+    <section class="relative pt-7 pb-3 lg:pt-8 lg:pb-4 overflow-hidden bg-gradient-to-b from-white to-gray-50">
+        <!-- 背景装饰 -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-red-100 to-pink-50 blur-3xl opacity-60"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-blue-100 to-indigo-50 blur-3xl opacity-40"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+            <!-- 文章标题 -->
+            <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-[1.5] mb-6 text-center">
+                中关村杂志专访：罗引与中科闻歌的"科研远征"
+            </h1>
+
+            <!-- 文章元信息 -->
+            <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500 mb-8">
+                <div class="flex items-center">
+                    <i data-lucide="calendar" class="w-4 h-4 mr-1.5"></i>
+                    <span>2024年9月15日</span>
+                </div>
+                <span class="px-3 py-1 bg-red-50 text-red-600 rounded-full text-xs font-medium">媒体报道</span>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 主内容区 -->
+    <section class="py-8 lg:py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                    <article class="max-w-none">
+                        <!-- 文章导语 -->
+                        <article class="bg-white rounded-xl shadow-sm p-6 lg:p-8 mb-8">
+                            <p class="text-gray-700 leading-relaxed">
+                                在全球AI竞争加速的当下，中科闻歌如何在"通用技术"与"行业价值"之间搭起桥梁？近日，《中关村》杂志专访中科闻歌CEO罗引，讲述从科研走向产业、从实验室走向行业场景的一线实践，以及中科闻歌在大模型、智能体与决策智能融合上的探索路径。
+                            </p>
+                            <p class="text-gray-500 mt-4 text-sm">以下为报道全文转载。</p>
+                        </article>
+                        
+                        <!-- 文章正文 -->
+                        <div class="article-content">
+                            <figure class="mb-8">
+                                <img src="/assets/images/news1.png" 
+                                     alt="中关村杂志专访" 
+                                     class="w-full rounded-xl">
+                                <figcaption class="text-center text-sm text-gray-500 mt-3">
+                                    来源：中关村杂志 &nbsp;&nbsp;&nbsp;&nbsp;记者：石春晖
+                                </figcaption>
+                            </figure>
+
+                            <p>
+                                在人工智能加速演进的时代，全球正掀起新一轮技术与产业的竞赛。欧美大模型巨头频频登场，从ChatGPT到Gemini，从Claude到Grok 3，AI的力量正以指数级扩展，重塑人类的生产与生活方式。与此同时，中国正以"人工智能+"行动为牵引，推动科研成果转化与行业智能化升级。
+                            </p>
+
+                            <p>
+                                在这场AI大潮中，中科闻歌首席执行官、联合创始人罗引，走出了一条独特路径：他坚持"场景驱动"，让科研成果真正走出实验室，嵌入政企行业现场，把通用技术转化为专属化生产力。他与团队不仅把"复杂模型"转化为"可用系统"，更在大模型、智能体与决策智能的交汇处，探索出一条具有中国特色的科研产业化道路。
+                            </p>
+
+                            <p>
+                                2010年，罗引从电子科技大学毕业，随即加入中国科学院自动化所，投身互联网大数据、社会化媒体分析与大规模网络数据挖掘等前沿方向，曾任互联网大数据研究中心副总工程师。
+                            </p>
+
+                            <p>
+                                长期科研训练让他在安全信息学、决策智能、社会计算等方向打下坚实基础。但他逐渐意识到，实验室里的曲线再完美，如果无法进入真实场景，就难以转化为社会价值。科研与应用之间的鸿沟，始终是压在心头的难题。
+                            </p>
+
+                            <p>
+                                如何让论文中的算法真正走进产业一线？这是他不断追问的问题。国家层面亦在不断强化"科技成果转化"的号召，从创新驱动发展战略到"揭榜挂帅"的科研机制，都在鼓励科研人员将成果写在祖国大地上。这种共鸣，成为他日后创业的思想源点。
+                            </p>
+
+                            <h2 id="section-1">创业起步：一次次"被催交付"的倒逼</h2>
+
+                            <p>
+                                2017年，罗引与王磊等青年科研人员共同创办中科闻歌。契机也有现实因素：在自动化所承担项目时，他们一次次被合作方"催着要交付"。科研范式重论文，产业范式重落地，两者的落差正是创业的起点。
+                            </p>
+
+                            <p>
+                                最艰难的掣肘来自资源紧缺，团队常常要协调多方资源才能完成训练任务。逆境之下，却反而逼迫团队在算法效率、系统架构与工程调优上打磨得更为极致。随着承担的多个国家级大数据项目的顺利推进，公司逐步具备了自建与滚动投入算力设施的能力。这一转折，让中科闻歌拥有了在产业赛道驰骋的底气。
+                            </p>
+
+                            <p>
+                                更重要的是，他们确立了一条清晰的成长路径——"场景反推算法"。先抓行业场景，再反推模型与工程化路线。与新华社、《人民日报》等头部客户合作，让公司早早实现了"订单支撑研发、交付打磨技术"的闭环。这种路径不同于硅谷初创依赖资本烧钱的模式，而是基于真实场景驱动的产业化逻辑，更符合中国科研成果转化的土壤。
+                            </p>
+
+                            <h2 id="section-2">场景驱动：从通用到专属的价值跃迁</h2>
+
+                            <p>
+                                科研重原创，产业重交付。中科闻歌的价值，正是在两者之间搭起桥梁。罗引把这一过程概括为："从通用走向专属，从技术走向场景。"
+                            </p>
+
+                            <p>
+                                通用大模型是基础，但单靠通用能力无法满足复杂行业的需求。行业要的不只是"能用"，更是"好用、可靠、可控"。因此，中科闻歌始终坚持通过场景驱动来沉淀知识、塑造流程、积累工程框架。
+                            </p>
+
+                            <p>
+                                在这一思路下，公司打造了DIOS决策智能操作系统，以"数据—模型—决策"三位一体为核心：X-Data天湖数据操作系统：打破数据孤岛，构建AI-Ready的数字资产；雅意大模型：以跨语言、多模态理解与生成为核心，强调专属化、安全性与私有化部署；智川X-Agent智能体开发平台：支持智能体编排，降低AI应用的门槛。
+                            </p>
+
+                            <img src="https://www.wenge.com/webadmin/editor/attached/upload/image/20251119/20251119100357_0887.jpeg" alt="DIOS决策智能操作系统" class="w-full rounded-xl">
+
+                            <p class="text-sm text-gray-500 mt-2">
+                                这三大核心产品并非孤立存在，而是场景驱动下的系统工程。它们覆盖从数据治理到语义理解、从跨模态认知到决策闭环的全链条。与国际大模型偏重参数规模和算力堆叠的竞争不同，中科闻歌选择以场景为核心牵引，逐步沉淀出产业化方法论，展现出一条差异化的道路。
+                            </p>
+
+                            <h2 id="section-3">深耕垂直行业：把AI嵌入业务流程</h2>
+
+                            <p>
+                                场景驱动不仅是理念，更在一个个行业落地为实践。如今，中科闻歌已为政务、媒体宣传、金融等领域近千家客户提供服务，包括新华社、《人民日报》、中央广播电视总台等权威媒体，以及中国石化、北京银行、海尔、比亚迪等知名企业。
+                            </p>
+
+                            <p>
+                                在媒体领域，公司围绕"热点识别—选题生产—多模态生成—传播分析—资产管理"构建全链路能力，帮助采编团队从"人工追热点"走向"算法生成线索与洞见"。罗引举例说："以新华社全媒体智能选题生产为例，系统通过深度语义理解与领域社会计算，自动筛选有价值线索并优化分发策略，显著提升创作效率与用户满意度。更大范围看，我们已服务70%中央级媒体与600余家地方媒体，普遍缩短内容生产周期、提升发布频率。"
+                            </p>
+
+                            <p>
+                                在政务领域，公司为海淀区中关村街道打造"关芯"AI政务助手，围绕医保定点变更、就业推荐等九大高频事项提供"7×24" 小时智能咨询与办理引导，访问量已达数十万量级，满意度显著提升。
+                            </p>
+
+                            <p>
+                                在金融领域，公司将某银行的信贷初审报告生成时间压缩至约5分钟，初审耗时从过去的数天缩短至0.5天，流程效率与人员效能均明显提升。
+                            </p>
+
+                            <p>
+                                在中医领域，中科闻歌联合中国中医科学院推出的大医金匮中医药大模型，实现了从中医药识别分类、病症辨证推理到治疗方案生成的全链路智能化升级。目前该模型已通过中国信通院可信AI评估4+级，其中医医师执业资格测试准确率达94%以上。基于该模型能力，公司与某省中医院共研的脾胃病辅助诊疗系统，缩短就诊时间30%，提升辨证准确率逾20%。
+                            </p>
+                            
+
+                        </div>
+                        
+                        <!-- 文章底部信息 -->
+                        <div class="mt-12 pt-8 border-t border-gray-200">
+                            <!-- 标签 -->
+                            <div class="flex flex-wrap items-center gap-2 mb-8">
+                                <span class="text-sm text-gray-500 mr-2">标签：</span>
+                                <a href="#" class="tag px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">专精特新</a>
+                                <a href="#" class="tag px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">人工智能</a>
+                                <a href="#" class="tag px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">企业荣誉</a>
+                                <a href="#" class="tag px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">技术创新</a>
+                            </div>
+                            
+                            <!-- 分享按钮 -->
+                            <div class="flex items-center justify-between flex-wrap gap-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">分享到：</span>
+                                    <button class="share-btn w-7 h-7 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600">
+                                        <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                    <button class="share-btn w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600">
+                                        <i data-lucide="twitter" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                    <button class="share-btn w-7 h-7 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900">
+                                        <i data-lucide="link" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- 上一篇/下一篇 -->
+                    <div class="mt-8 space-y-4">
+                        <a href="#" class="block group">
+                            <div class="flex items-baseline gap-2">
+                                <p class="text-sm text-gray-500 shrink-0">上一篇</p>
+                                <p class="text-gray-900 group-hover:text-red-600 transition-colors">
+                                    中科闻歌与某大型银行签署战略合作协议，共同推进金融智能化转型
+                                </p>
+                            </div>
+                        </a>
+                        <a href="#" class="block group">
+                            <div class="flex items-baseline gap-2">
+                                <p class="text-sm text-gray-500 shrink-0">下一篇</p>
+                                <p class="text-gray-900 group-hover:text-red-600 transition-colors">
+                                    雅意大模型2.0正式发布，多模态能力全面提升
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer 容器 -->
+    <div id="footer-container"></div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top fixed bottom-8 right-8 w-10 h-10 bg-gray-400/50 text-white rounded-full shadow flex items-center justify-center hover:bg-gray-500/60 transition-colors z-50 backdrop-blur-sm">
+        <i data-lucide="chevron-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- 组件加载脚本 -->
+    <script src="/components/components.js"></script>
+    
+    <script>
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // 分享功能
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 这里可以添加实际的分享逻辑
+                alert('分享功能即将上线');
+            });
+        });
+    </script>
+</body>
+</html>
