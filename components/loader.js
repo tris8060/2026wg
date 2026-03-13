@@ -6,8 +6,12 @@ class ComponentLoader {
         const scripts = document.getElementsByTagName('script');
         for (let script of scripts) {
             if (script.src && script.src.includes('loader.js')) {
-                const scriptUrl = new URL(script.src);
-                basePath = scriptUrl.href.substring(0, scriptUrl.href.lastIndexOf('/') + 1);
+                try {
+                    const scriptUrl = new URL(script.src);
+                    basePath = scriptUrl.href.substring(0, scriptUrl.href.lastIndexOf('/') + 1);
+                } catch (e) {
+                    console.warn('Failed to parse script URL, using default path');
+                }
                 break;
             }
         }
@@ -16,19 +20,23 @@ class ComponentLoader {
             navbar: basePath + 'navbar.html',
             footer: basePath + 'footer.html'
         };
+        
+        console.log('ComponentLoader initialized with basePath:', basePath);
     }
 
     // 加载单个组件
     async loadComponent(componentName, containerSelector) {
         try {
+            console.log(`Loading ${componentName} from:`, this.components[componentName]);
             const response = await fetch(this.components[componentName]);
             if (!response.ok) {
-                throw new Error(`Failed to load ${componentName} component`);
+                throw new Error(`Failed to load ${componentName}: ${response.status}`);
             }
             const html = await response.text();
             const container = document.querySelector(containerSelector);
             if (container) {
                 container.innerHTML = html;
+                console.log(`${componentName} loaded successfully`);
                 // 组件加载完成后重新初始化Lucide图标
                 if (window.lucide) {
                     lucide.createIcons();
@@ -55,9 +63,16 @@ class ComponentLoader {
                 requestAnimationFrame(() => {
                     forceReflow();
                 });
+            } else {
+                console.error(`Container ${containerSelector} not found`);
             }
         } catch (error) {
             console.error(`Error loading ${componentName} component:`, error);
+            // 显示错误信息到页面
+            const container = document.querySelector(containerSelector);
+            if (container) {
+                container.innerHTML = `<div style="padding: 20px; background: #fee2e2; color: #991b1b; border-radius: 8px;">导航栏加载失败，请刷新页面重试</div>`;
+            }
         }
     }
 
@@ -174,12 +189,14 @@ class ComponentLoader {
 
     // 加载所有组件
     async loadAllComponents() {
+        console.log('Loading all components...');
         await Promise.all([
             this.loadComponent('navbar', '#navbar-container'),
             this.loadComponent('footer', '#footer-container')
         ]);
         // 组件加载完成后触发自定义事件
         window.dispatchEvent(new Event('componentsLoaded'));
+        console.log('All components loaded');
     }
 }
 
