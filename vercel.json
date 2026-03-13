@@ -3,7 +3,7 @@
   "name": "2026wg-website",
   "builds": [
     {
-      "src": "**/*.html",
+      "src": "**/*.{html,js,css,svg,png,jpg,jpeg,ico}",
       "use": "@vercel/static"
     }
   ],
