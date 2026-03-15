@@ -276,14 +276,14 @@
                 <!-- Stage Selectors (Horizontal) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 relative z-10">
                     <!-- Stage 1 -->
-                    <button class="stage-btn active text-left p-6 rounded-3xl border border-blue-200 bg-blue-50 relative overflow-hidden transition-all duration-300 shadow-md transform hover:-translate-y-1" data-target="stage1" data-theme="blue">
+                    <button class="stage-btn active text-left p-6 rounded-3xl border border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-200 relative overflow-hidden transition-all duration-300 transform hover:-translate-y-1 group" data-target="stage1" data-theme="blue">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-black text-blue-700 relative z-10">科研团队创立</h3>
-                            <span class="px-2.5 py-1 bg-blue-100 text-blue-600 text-xs font-bold rounded-full relative z-10">1995-2017</span>
+                            <h3 class="text-lg font-black text-slate-700 group-[.active]:text-blue-700 relative z-10 transition-colors">科研团队创立</h3>
+                            <span class="px-2.5 py-1 bg-slate-100 group-[.active]:bg-blue-100 text-slate-500 group-[.active]:text-blue-600 text-xs font-bold rounded-full relative z-10 transition-colors">1995-2017</span>
                         </div>
-                        <p class="text-slate-600 text-sm font-medium relative z-10">人工智能核心技术孵化阶段</p>
-                        <div class="absolute bottom-0 left-0 h-1.5 bg-blue-500 w-full transition-all"></div>
-                        <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-200 rounded-full opacity-20 blur-xl"></div>
+                        <p class="text-slate-500 group-[.active]:text-slate-600 text-sm font-medium relative z-10 transition-colors">人工智能核心技术孵化阶段</p>
+                        <div class="absolute bottom-0 left-0 h-1.5 bg-slate-200 group-[.active]:bg-blue-500 w-full transition-all"></div>
+                        <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-200 rounded-full opacity-0 group-[.active]:opacity-20 blur-xl transition-all"></div>
                     </button>
 
                     <!-- Stage 2 -->
@@ -576,38 +576,38 @@
                 <!-- 1. 证书图片占位区 (后续替换真实图片) -->
                 <div class="mb-12">
                     <h3 class="text-sm font-bold text-slate-400 mb-4 px-1">证书展示</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+                    <div class="flex gap-4 sm:gap-5 overflow-x-auto pb-2">
                         <!-- 占位框 x 8 -->
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 1</span>
                             <!-- 替换图片示例: <img src="您的图片地址" class="absolute inset-0 w-full h-full object-cover"> -->
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 2</span>
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 3</span>
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 4</span>
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 5</span>
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 6</span>
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 7</span>
                         </div>
-                        <div class="aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
+                        <div class="flex-shrink-0 w-[200px] sm:w-[240px] aspect-[4/3] bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 hover:border-slate-300 transition-all group overflow-hidden relative">
                             <i data-lucide="image" class="w-8 h-8 mb-2 opacity-40 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium opacity-60">证书大图占位 8</span>
                         </div>
@@ -832,7 +832,7 @@
                     <!-- Top Header & Buttons -->
                     <div class="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6 xl:gap-8 mb-12 relative z-10">
                         <div class="w-full">
-                            <h3 class="text-2xl md:text-4xl font-bold text-white mb-4 tracking-tight text-left w-full whitespace-nowrap">秉持开源文化理念，代码、模型向每一位开发者开放</h3>
+                            <h3 class="text-2xl md:text-4xl font-bold text-white mb-4 tracking-tight text-left w-full">秉持开源文化理念，代码、模型向每一位开发者开放</h3>
                             <p class="text-[#8B89A4] text-sm sm:text-base font-medium">携手全球开发者，共建繁荣的 AI 原生应用创新生态。</p>
                         </div>
                         <div class="flex flex-wrap gap-4 shrink-0">
@@ -933,17 +933,17 @@
                 events: [
                     { year: '1995', text: '学术带头人曾大军教授在卡内基梅隆大学开启人工智能技术研究', image: null },
                     { year: '2006', text: '中国科学院科研团队成立专注人工智能技术创新公司，创始人相继加入团队', image: null },
-                    { year: '2017.03', text: '响应国家和中科院科技成果转化政策成立中科闻歌', image: '' }
+                    { year: '2017.03', text: '响应国家和中科院科技成果转化政策成立中科闻歌', image: '1' }
                 ]
             },
             stage2: {
                 themeColor: 'violet',
                 gradient: 'from-violet-300 via-violet-500 to-transparent',
                 events: [
-                    { year: '2018', text: '推出DIOS认知与决策智能基础平台，发布AI算法平台“天湖”数据操作系统“闻海”完成A轮融资', image: '' },
+                    { year: '2018', text: '推出DIOS认知与决策智能基础平台，发布AI算法平台“天湖”数据操作系统“闻海”完成A轮融资', image: '2' },
                     { year: '2019', text: '推出领域AI系统应用 媒宣-红旗、舆情-晴天 金融-天镜完成B轮融资', image: null },
                     { year: '2020', text: '完成C轮融资', image: null },
-                    { year: '2021', text: '推出DIOS 2.0 认知与决策智能基础平台，发布AI+媒宣、AI+金融、AI+治理、AI+安全等领域解决方案 完成D轮融资', image: '' },
+                    { year: '2021', text: '推出DIOS 2.0 认知与决策智能基础平台，发布AI+媒宣、AI+金融、AI+治理、AI+安全等领域解决方案 完成D轮融资', image: '3' },
                     { year: '2022', text: '完成D轮融资', image: null }
                 ]
             },
@@ -951,8 +951,8 @@
                 themeColor: 'cyan',
                 gradient: 'from-cyan-300 via-cyan-500 to-transparent',
                 events: [
-                    { year: '2023', text: '推出 DIOS 3.0决策智能操作系统，相继发布雅意大模型1.0 2.0', image: '' },
-                    { year: '2024', text: '发布优雅YOYA多模态大模型，完成新一轮融资，累计超10亿元', image: '' },
+                    { year: '2023', text: '推出 DIOS 3.0决策智能操作系统，相继发布雅意大模型1.0 2.0', image: ['4', '5'] },
+                    { year: '2024', text: '发布优雅YOYA多模态大模型，完成新一轮融资，累计超10亿元', image: '6' },
                     { year: '2025', text: '推出智川X-Agent 一站式智能体开发平台', image: null },
                     { year: '2026', text: '发布DIP决策智能操作系统，发布雅意大模型3.0', image: null }
                 ]
@@ -960,59 +960,78 @@
         };
 
         // Render Timeline Nodes (HORIZONTAL LOGIC)
-        function renderTimeline(stageKey) {
+        function renderTimeline() {
             const container = document.getElementById('timeline-content');
-            if (!container) return; // Added check here
-            
-            const data = timelineData[stageKey];
+            if (!container) return;
             
             container.innerHTML = '';
             
-            data.events.forEach((item, index) => {
-                const colorClasses = {
-                    blue: { text: 'text-blue-600', bg: 'bg-blue-500', shadow: 'shadow-blue-500/40', borderHover: 'group-hover:border-blue-300', gradient: 'from-blue-400 to-blue-200' },
-                    violet: { text: 'text-violet-600', bg: 'bg-violet-500', shadow: 'shadow-violet-500/40', borderHover: 'group-hover:border-violet-300', gradient: 'from-violet-400 to-violet-200' },
-                    cyan: { text: 'text-cyan-600', bg: 'bg-cyan-500', shadow: 'shadow-cyan-500/40', borderHover: 'group-hover:border-cyan-300', gradient: 'from-cyan-400 to-cyan-200' },
-                }[data.themeColor];
+            // Render all stages
+            const allStages = ['stage1', 'stage2', 'stage3'];
+            let globalIndex = 0;
+            
+            allStages.forEach(stageKey => {
+                const data = timelineData[stageKey];
+                
+                data.events.forEach((item, index) => {
+                    const colorClasses = {
+                        blue: { text: 'text-blue-600', bg: 'bg-blue-500', shadow: 'shadow-blue-500/40', borderHover: 'group-hover:border-blue-300', gradient: 'from-blue-400 to-blue-200' },
+                        violet: { text: 'text-violet-600', bg: 'bg-violet-500', shadow: 'shadow-violet-500/40', borderHover: 'group-hover:border-violet-300', gradient: 'from-violet-400 to-violet-200' },
+                        cyan: { text: 'text-cyan-600', bg: 'bg-cyan-500', shadow: 'shadow-cyan-500/40', borderHover: 'group-hover:border-cyan-300', gradient: 'from-cyan-400 to-cyan-200' },
+                    }[data.themeColor];
 
-                let imageHtml = '';
-                if (item.image !== null) {
-                    imageHtml = `
-                        <div class="mt-4 w-full h-28 sm:h-32 bg-slate-100 rounded-xl flex items-center justify-center border border-slate-200 overflow-hidden relative">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-50 opacity-50"></div>
-                            <span class="text-slate-400 text-xs font-medium relative z-10 flex flex-col items-center">
-                                <i data-lucide="image" class="w-5 h-5 mb-1 opacity-50"></i>
-                                ${item.image}
-                            </span>
+                    let imageHtml = '';
+                    if (item.image !== null && item.image !== '') {
+                        // 检查是否需要横向排列多张图片
+                        if (Array.isArray(item.image)) {
+                            imageHtml = `
+                                <div class="mt-4 flex gap-2 w-[90%]">
+                                    ${item.image.map(img => `
+                                        <div class="flex-1 aspect-video bg-slate-100 rounded-xl flex items-center justify-center border border-slate-200 overflow-hidden relative">
+                                            <img src="/assets/images/fazhanlicheng${img}.png" alt="发展历程" class="w-full h-full object-cover">
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            `;
+                        } else {
+                            imageHtml = `
+                                <div class="mt-4 w-full aspect-video bg-slate-100 rounded-xl flex items-center justify-center border border-slate-200 overflow-hidden relative">
+                                    <img src="/assets/images/fazhanlicheng${item.image}.png" alt="发展历程" class="w-full h-full object-cover">
+                                </div>
+                            `;
+                        }
+                    }
+
+                    // Is last item of all stages? Hide the connecting line segment
+                    const isLast = (stageKey === 'stage3' && index === data.events.length - 1);
+                    const lineHtml = isLast ? '' : `<div class="absolute left-7 top-1/2 -translate-y-1/2 w-[calc(100%-8px)] h-[3px] bg-gradient-to-r ${colorClasses.gradient} opacity-40 z-0"></div>`;
+
+                    // 根据是否有多个图片决定节点宽度
+                    const nodeWidth = Array.isArray(item.image) ? 'w-[560px] sm:w-[640px]' : 'w-[280px] sm:w-[320px]';
+                    
+                    const nodeHtml = `
+                        <div class="relative flex-none ${nodeWidth} timeline-node group snap-center flex flex-col px-2" data-stage="${stageKey}" data-index="${index}">
+                            <!-- Year -->
+                            <div class="pl-5 mb-2 h-[40px] flex items-end">
+                                <h3 class="text-2xl md:text-3xl font-black ${colorClasses.text} tracking-tight group-hover:-translate-y-1 transition-transform">${item.year}</h3>
+                            </div>
+                            
+                            <!-- Timeline Node & Connecting Line -->
+                            <div class="relative w-full h-8 flex items-center mb-4">
+                                ${lineHtml}
+                                <div class="absolute left-5 w-4 h-4 rounded-full ${colorClasses.bg} border-[3px] border-white shadow-[0_0_8px_rgba(0,0,0,0.15)] z-10 group-hover:scale-125 transition-transform duration-300"></div>
+                            </div>
+
+                            <!-- Content Card -->
+                            <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 ${colorClasses.borderHover} transition-all duration-300 hover:shadow-md h-full flex flex-col">
+                                <p class="text-slate-600 text-sm leading-relaxed font-medium flex-1">${item.text}</p>
+                                ${imageHtml}
+                            </div>
                         </div>
                     `;
-                }
-
-                // Is last item? Hide the connecting line segment
-                const isLast = index === data.events.length - 1;
-                const lineHtml = isLast ? '' : `<div class="absolute left-7 top-1/2 -translate-y-1/2 w-[calc(100%-8px)] h-[3px] bg-gradient-to-r ${colorClasses.gradient} opacity-40 z-0"></div>`;
-
-                const nodeHtml = `
-                    <div class="relative flex-none w-[280px] sm:w-[320px] timeline-node group snap-center flex flex-col px-2">
-                        <!-- Year -->
-                        <div class="pl-5 mb-2 h-[40px] flex items-end">
-                            <h3 class="text-2xl md:text-3xl font-black ${colorClasses.text} tracking-tight group-hover:-translate-y-1 transition-transform">${item.year}</h3>
-                        </div>
-                        
-                        <!-- Timeline Node & Connecting Line -->
-                        <div class="relative w-full h-8 flex items-center mb-4">
-                            ${lineHtml}
-                            <div class="absolute left-5 w-4 h-4 rounded-full ${colorClasses.bg} border-[3px] border-white shadow-[0_0_8px_rgba(0,0,0,0.15)] z-10 group-hover:scale-125 transition-transform duration-300"></div>
-                        </div>
-
-                        <!-- Content Card -->
-                        <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100 ${colorClasses.borderHover} transition-all duration-300 hover:shadow-md h-full flex flex-col">
-                            <p class="text-slate-600 text-sm leading-relaxed font-medium flex-1">${item.text}</p>
-                            ${imageHtml}
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', nodeHtml);
+                    container.insertAdjacentHTML('beforeend', nodeHtml);
+                    globalIndex++;
+                });
             });
 
             if(typeof lucide !== 'undefined') lucide.createIcons();
@@ -1023,14 +1042,19 @@
                 nodes.forEach((node, idx) => {
                     setTimeout(() => {
                         node.classList.add('show');
-                    }, idx * 100); // Faster staggered fade in for horizontal
+                    }, idx * 100);
                 });
             }, 50);
+        }
+
+        // Scroll to specific stage
+        function scrollToStage(stageKey) {
+            const container = document.getElementById('timeline-content');
+            if (!container) return;
             
-            // Reset Scroll position when changing tabs
-            const scrollContainer = document.getElementById('timeline-scroll-container');
-            if (scrollContainer) {
-                scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            const targetNode = container.querySelector(`[data-stage="${stageKey}"]`);
+            if (targetNode) {
+                targetNode.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
             }
         }
 
@@ -1039,7 +1063,7 @@
         
         // Initialize Timeline - Check if element exists before calling
         if (document.getElementById('timeline-content')) {
-            renderTimeline('stage1');
+            renderTimeline();
         }
 
         stageBtns.forEach(btn => {
@@ -1055,9 +1079,9 @@
                 btn.classList.add('active', `bg-${theme}-50`, `border-${theme}-200`);
                 btn.classList.remove('bg-white', 'border-slate-100');
 
-                // Render Content
+                // Scroll to target stage
                 const target = btn.getAttribute('data-target');
-                renderTimeline(target);
+                scrollToStage(target);
             });
         });
 
