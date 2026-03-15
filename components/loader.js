@@ -1,9 +1,20 @@
 // 组件加载器 - 用于动态加载公共组件
 class ComponentLoader {
     constructor() {
+        // 获取基础路径 - 通过查找当前脚本标签
+        let basePath = './components/';
+        const scripts = document.getElementsByTagName('script');
+        for (let script of scripts) {
+            if (script.src && script.src.includes('loader.js')) {
+                const scriptUrl = new URL(script.src);
+                basePath = scriptUrl.href.substring(0, scriptUrl.href.lastIndexOf('/') + 1);
+                break;
+            }
+        }
+        
         this.components = {
-            navbar: '/components/navbar.html',
-            footer: '/components/footer.html'
+            navbar: basePath + 'navbar.html',
+            footer: basePath + 'footer.html'
         };
     }
 

@@ -17,11 +17,11 @@
             <!-- Center Links (桌面端导航) -->
             <div class="hidden lg:flex space-x-6 xl:space-x-10 items-center h-full">
                 <!-- 1. DIOS决策智能操作系统 (升级为超级菜单) -->
-                <div class="group h-full flex items-center">
-                    <button class="text-sm font-semibold text-gray-600 group-hover:text-indigo-600 inline-flex items-center h-full outline-none transition-colors">
-                        DIOS决策智能操作系统 <i data-lucide="chevron-down" class="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform"></i>
+                <div class="nav-dropdown h-full flex items-center" data-dropdown="dios">
+                    <button class="nav-dropdown-btn text-sm font-semibold text-gray-600 hover:text-indigo-600 inline-flex items-center h-full outline-none transition-colors">
+                        DIOS决策智能操作系统 <i data-lucide="chevron-down" class="dropdown-icon ml-1 w-3 h-3 transition-transform"></i>
                     </button>
-                    <div class="absolute top-[80px] left-0 w-full bg-white shadow-2xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div class="nav-dropdown-menu absolute top-[80px] left-0 w-full bg-white shadow-2xl border-t border-gray-100 opacity-0 invisible transition-all duration-300">
                         <div class="max-w-[1440px] mx-auto flex min-h-[380px]">
                             <!-- 左侧：产品选项卡 -->
                             <div class="w-[280px] bg-gray-50 border-r border-gray-100 py-6 flex flex-col shrink-0">
@@ -109,11 +109,11 @@
                 </div>
 
                 <!-- 2. 行业产品 -->
-                <div class="group h-full flex items-center">
-                    <button class="text-sm font-semibold text-gray-600 group-hover:text-indigo-600 inline-flex items-center h-full outline-none transition-colors">
-                        行业产品 <i data-lucide="chevron-down" class="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform"></i>
+                <div class="nav-dropdown h-full flex items-center" data-dropdown="industry">
+                    <button class="nav-dropdown-btn text-sm font-semibold text-gray-600 hover:text-indigo-600 inline-flex items-center h-full outline-none transition-colors">
+                        行业产品 <i data-lucide="chevron-down" class="dropdown-icon ml-1 w-3 h-3 transition-transform"></i>
                     </button>
-                    <div class="absolute top-[80px] left-0 w-full bg-white shadow-2xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div class="nav-dropdown-menu absolute top-[80px] left-0 w-full bg-white shadow-2xl border-t border-gray-100 opacity-0 invisible transition-all duration-300">
                         <div class="max-w-[1440px] mx-auto flex min-h-[420px]">
                             <div class="w-[240px] bg-gray-50 border-r border-gray-100 py-6 flex flex-col shrink-0">
                                 <button class="industry-tab-btn px-8 py-3.5 text-left text-sm font-bold text-modern-dark bg-white border-l-[3px] border-indigo-600 transition-colors outline-none" data-target="ind-media">媒宣</button>

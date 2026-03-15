@@ -71,15 +71,85 @@ const ComponentLoader = {
      * 初始化导航栏相关的JavaScript功能
      */
     initNavScripts: function() {
+        // 下拉菜单点击交互
+        const navDropdowns = document.querySelectorAll('.nav-dropdown');
+        let activeDropdown = null;
+
+        navDropdowns.forEach(dropdown => {
+            const btn = dropdown.querySelector('.nav-dropdown-btn');
+            const menu = dropdown.querySelector('.nav-dropdown-menu');
+            const icon = dropdown.querySelector('.dropdown-icon');
+
+            if (btn && menu) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    // 如果当前下拉菜单已经是打开的，则关闭它
+                    if (activeDropdown === dropdown) {
+                        menu.classList.remove('opacity-100', 'visible');
+                        menu.classList.add('opacity-0', 'invisible');
+                        if (icon) icon.classList.remove('rotate-180');
+                        activeDropdown = null;
+                    } else {
+                        // 关闭其他打开的下拉菜单
+                        navDropdowns.forEach(d => {
+                            const m = d.querySelector('.nav-dropdown-menu');
+                            const i = d.querySelector('.dropdown-icon');
+                            if (m) {
+                                m.classList.remove('opacity-100', 'visible');
+                                m.classList.add('opacity-0', 'invisible');
+                            }
+                            if (i) i.classList.remove('rotate-180');
+                        });
+                        
+                        // 打开当前下拉菜单
+                        menu.classList.remove('opacity-0', 'invisible');
+                        menu.classList.add('opacity-100', 'visible');
+                        if (icon) icon.classList.add('rotate-180');
+                        activeDropdown = dropdown;
+                    }
+                });
+            }
+        });
+
+        // 点击空白处关闭下拉菜单
+        document.addEventListener('click', (e) => {
+            if (activeDropdown && !activeDropdown.contains(e.target)) {
+                navDropdowns.forEach(dropdown => {
+                    const menu = dropdown.querySelector('.nav-dropdown-menu');
+                    const icon = dropdown.querySelector('.dropdown-icon');
+                    if (menu) {
+                        menu.classList.remove('opacity-100', 'visible');
+                        menu.classList.add('opacity-0', 'invisible');
+                    }
+                    if (icon) icon.classList.remove('rotate-180');
+                });
+                activeDropdown = null;
+            }
+        });
+
         // 搜索框下拉交互逻辑
         const searchToggleBtn = document.getElementById('searchToggleBtn');
         const searchDropdownPanel = document.getElementById('searchDropdownPanel');
         const closeSearchBtn = document.getElementById('closeSearchBtn');
 
         if(searchToggleBtn && searchDropdownPanel) {
-            function toggleSearch() {
+            function toggleSearch(e) {
+                if (e) e.stopPropagation();
                 const isClosed = searchDropdownPanel.classList.contains('scale-y-0');
                 if (isClosed) {
+                    // 关闭导航下拉菜单
+                    navDropdowns.forEach(dropdown => {
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        const icon = dropdown.querySelector('.dropdown-icon');
+                        if (menu) {
+                            menu.classList.remove('opacity-100', 'visible');
+                            menu.classList.add('opacity-0', 'invisible');
+                        }
+                        if (icon) icon.classList.remove('rotate-180');
+                    });
+                    activeDropdown = null;
+                    
                     searchDropdownPanel.classList.remove('scale-y-0', 'opacity-0', 'invisible');
                     setTimeout(() => { 
                         const input = searchDropdownPanel.querySelector('input');
@@ -147,7 +217,8 @@ const ComponentLoader = {
         const diosContentPanes = document.querySelectorAll('.dios-content-pane');
         
         diosTabBtns.forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const target = btn.dataset.target;
                 
                 // 更新按钮样式
@@ -176,7 +247,8 @@ const ComponentLoader = {
         const industryContentPanes = document.querySelectorAll('.industry-content-pane');
         
         industryTabBtns.forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const target = btn.dataset.target;
                 
                 // 更新按钮样式
